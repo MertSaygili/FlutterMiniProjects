@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// test ediyorum
 class ChangeAppBarColor extends StatefulWidget {
   const ChangeAppBarColor({Key? key}) : super(key: key);
 
