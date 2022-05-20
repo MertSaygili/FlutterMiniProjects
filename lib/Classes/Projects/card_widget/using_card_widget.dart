@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// ignore: must_be_immutable
 class DesingningCardWidget extends StatelessWidget {
-  const DesingningCardWidget({Key? key}) : super(key: key);
+  DesingningCardWidget({Key? key}) : super(key: key);
+  ColorAttributes colorAttributes = ColorAttributes();
   final String _appBarTitle = "Designing Card Widget";
 
   @override
@@ -15,7 +17,14 @@ class DesingningCardWidget extends StatelessWidget {
       body: Padding(
         padding: PaddingItems().paddingPageNormal,
         child: Column(
-          children: const [],
+          children: const [
+            Card(
+              child: SizedBox(
+                width: 300,
+                child: Text("hiadsadas"),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -31,4 +40,8 @@ class PaddingItems {
 class PaddingAttributes {
   final double _verticalSmall = 10;
   final double _horizontalSmall = 8;
+}
+
+class ColorAttributes {
+  final Color _colorRed = Colors.red;
 }
