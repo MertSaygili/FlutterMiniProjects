@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/Projects/card_widget/using_card_widget.dart';
+import 'Classes/Projects/card_widget/spotify_card_widget.dart';
 
 void main() {
   runApp(const MyApp());
