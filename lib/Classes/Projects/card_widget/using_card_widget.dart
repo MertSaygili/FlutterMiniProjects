@@ -11,20 +11,14 @@ class DesingningCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: colorAttributes._colorGreen,
         title: Center(child: Text(_appBarTitle)),
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: Padding(
         padding: PaddingItems().paddingPageNormal,
         child: Column(
-          children: const [
-            Card(
-              child: SizedBox(
-                width: 300,
-                child: Text("hiadsadas"),
-              ),
-            ),
-          ],
+          children: const [],
         ),
       ),
     );
@@ -43,5 +37,7 @@ class PaddingAttributes {
 }
 
 class ColorAttributes {
+  final Color _colorGreen = Colors.green;
+  final Color _colorYellow = Colors.yellow;
   final Color _colorRed = Colors.red;
 }
