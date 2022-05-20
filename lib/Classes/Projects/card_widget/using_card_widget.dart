@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// Ana scaffoldun iclerine metodlara ve widgetlrara bol, sayilari disari cikar
+// classlari tanimla
+
 // ignore: must_be_immutable
 class DesingningCardWidget extends StatelessWidget {
   DesingningCardWidget({Key? key}) : super(key: key);
