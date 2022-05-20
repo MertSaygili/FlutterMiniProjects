@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/Projects/card_widget/spotify_card_widget.dart';
+import 'Classes/Projects/card_widget/personel_management_card_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DesingningCardWidget(),
+      home: const PersonelManagementCardWidget(),
     );
   }
 }
