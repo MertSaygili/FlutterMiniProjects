@@ -64,7 +64,7 @@ flutter:
   assets: 
     - assets/img/nf_let-you-down.jpg
     - assets/img/_shape-on-you.jpg
-
+    - assets/img/me_jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
