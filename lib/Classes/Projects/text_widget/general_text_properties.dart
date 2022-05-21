@@ -12,6 +12,19 @@ class GeneralTextProperties extends StatelessWidget {
         title: Center(child: Text(appBarTitle)),
         systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
+      body: Padding(
+        padding: PaddingProperty().paddingPage,
+        child: Column(
+          children: [
+            Row(),
+          ],
+        ),
+      ),
     );
   }
+}
+
+class PaddingProperty {
+  final EdgeInsets paddingPage =
+      const EdgeInsets.symmetric(vertical: 15, horizontal: 8);
 }
