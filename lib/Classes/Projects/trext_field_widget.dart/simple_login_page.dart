@@ -12,9 +12,40 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: const [],
+      body: Padding(
+        padding: PaddingItems().paddingPage,
+        child: Center(
+          child: Column(
+            children: const [
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.start,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email_rounded),
+                ),
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.start,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.key),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
+}
+
+class PaddingItems {
+  final EdgeInsets paddingPage = EdgeInsets.symmetric(
+      vertical: PaddingValues().paddingVerticalNormal,
+      horizontal: PaddingValues().paddingHorizontalNormal);
+}
+
+class PaddingValues {
+  final double paddingVerticalNormal = 150;
+  final double paddingHorizontalNormal = 10;
 }
