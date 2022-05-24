@@ -106,18 +106,22 @@ class _TextFieldFormState extends State<TextFieldForm> {
 
   IconButton? visibilityOfPassword() {
     if (widget.hintText == 'password') {
-      return IconButton(
-        icon: _isObscure
-            ? const Icon(Icons.visibility)
-            : const Icon(Icons.visibility_off),
-        onPressed: () {
-          setState(() {
-            _isObscure = !_isObscure;
-          });
-        },
-      );
+      return visibilityIcon();
     }
     return null;
+  }
+
+  IconButton visibilityIcon() {
+    return IconButton(
+      icon: _isObscure
+          ? const Icon(Icons.visibility)
+          : const Icon(Icons.visibility_off),
+      onPressed: () {
+        setState(() {
+          _isObscure = !_isObscure;
+        });
+      },
+    );
   }
 }
 
