@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class SimpleLoginPage extends StatefulWidget {
   const SimpleLoginPage({Key? key}) : super(key: key);
@@ -9,15 +8,15 @@ class SimpleLoginPage extends StatefulWidget {
 }
 
 class _SimpleLoginPageState extends State<SimpleLoginPage> {
-  bool _isObscure = true;
-  final TextInputType keyboardEmail = TextInputType.emailAddress;
-  final TextInputType keyboardPassword = TextInputType.number;
-  final TextInputAction actionEmail = TextInputAction.next;
-  final TextInputAction actionPassword = TextInputAction.go;
-  final String hintTextEmail = 'user@gmail.com';
-  final String hintTextPassword = 'password';
-  final String labelTextEmail = 'mail';
-  final String labelTextPassword = 'password';
+  final _isObsecure = false;
+  final TextInputType _keyboardEmail = TextInputType.emailAddress;
+  final TextInputType _keyboardPassword = TextInputType.number;
+  final TextInputAction _actionEmail = TextInputAction.next;
+  final TextInputAction _actionPassword = TextInputAction.go;
+  final String _hintTextEmail = 'user@gmail.com';
+  final String _hintTextPassword = 'password';
+  final String _labelTextEmail = 'mail';
+  final String _labelTextPassword = 'password';
 
   @override
   Widget build(BuildContext context) {
@@ -28,96 +27,97 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
           Padding(
             padding: PaddingItems().paddingEmailTextField,
             child: TextFieldForm(
-              keyboardEmail: keyboardEmail,
-              actionEmail: actionEmail,
-              hintTextEmail: hintTextEmail,
-              labelTextEmail: labelTextEmail,
+              keyboard: _keyboardEmail,
+              action: _actionEmail,
+              hintText: _hintTextEmail,
+              labelText: _labelTextEmail,
               icon: IconItems().iconEmailRounded,
+              isObscure: true,
             ),
           ),
           Padding(
             padding: PaddingItems().paddingPasswordTextField,
             child: TextFieldForm(
-              keyboardEmail: keyboardPassword,
-              actionEmail: actionPassword,
-              hintTextEmail: hintTextPassword,
-              labelTextEmail: labelTextPassword,
+              keyboard: _keyboardPassword,
+              action: _actionPassword,
+              hintText: _hintTextPassword,
+              labelText: _labelTextPassword,
               icon: IconItems().iconKey,
+              isObscure: _isObsecure,
             ),
           ),
-          /*
-          Padding(
-            padding: PaddingItems().paddingPasswordTextField,
-            child: TextField(
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              keyboardType: keyboardPassword,
-              textInputAction: actionPassword,
-              textAlign: TextAlign.start,
-              obscureText: _isObscure,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                suffixIcon: VisibilityOfPassword(),
-                prefixIcon: IconItems().iconKey,
-                hintText: hintTextPassword,
-                labelText: labelTextPassword,
-                labelStyle: labelStyleTextField(),
-              ),
-            ),
-          ),
-        */
         ],
       ),
     );
   }
-
-  IconButton VisibilityOfPassword() {
-    return IconButton(
-      icon: _isObscure
-          ? const Icon(Icons.visibility)
-          : const Icon(Icons.visibility_off),
-      onPressed: () {
-        setState(() {
-          _isObscure = !_isObscure;
-        });
-      },
-    );
-  }
 }
 
-class TextFieldForm extends StatelessWidget {
+class TextFieldForm extends StatefulWidget {
   const TextFieldForm({
     Key? key,
-    required this.keyboardEmail,
-    required this.actionEmail,
-    required this.hintTextEmail,
-    required this.labelTextEmail,
+    required this.keyboard,
+    required this.action,
+    required this.hintText,
+    required this.labelText,
     required this.icon,
+    required this.isObscure,
   }) : super(key: key);
 
-  final TextInputType keyboardEmail;
-  final TextInputAction actionEmail;
-  final String hintTextEmail;
-  final String labelTextEmail;
+  final TextInputType keyboard;
+  final TextInputAction action;
+  final String hintText;
+  final String labelText;
   final Icon icon;
+  // ignore: prefer_typing_uninitialized_variables
+  final isObscure;
+
+  @override
+  State<TextFieldForm> createState() => _TextFieldFormState();
+}
+
+class _TextFieldFormState extends State<TextFieldForm> {
+  bool _isObscure = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _isObscure = widget.isObscure;
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      keyboardType: keyboardEmail,
+      keyboardType: widget.keyboard,
       textAlign: TextAlign.start,
-      textInputAction: actionEmail,
+      textInputAction: widget.action,
       autofocus: true,
+      obscureText: _isObscure,
       decoration: InputDecoration(
         border: BorderSettings().textFieldBorder(),
-        prefixIcon: icon,
-        hintText: hintTextEmail,
-        labelText: labelTextEmail,
+        prefixIcon: widget.icon,
+        suffixIcon: visibilityOfPassword(),
+        hintText: widget.hintText,
+        labelText: widget.labelText,
         labelStyle: LabelStyle().labelStyleTextField(),
         fillColor: Theme.of(context).colorScheme.onBackground,
       ),
     );
+  }
+
+  IconButton? visibilityOfPassword() {
+    if (widget.hintText == 'password') {
+      return IconButton(
+        icon: _isObscure
+            ? const Icon(Icons.visibility)
+            : const Icon(Icons.visibility_off),
+        onPressed: () {
+          setState(() {
+            _isObscure = !_isObscure;
+          });
+        },
+      );
+    }
+    return null;
   }
 }
 
@@ -143,8 +143,8 @@ class PaddingItems {
 }
 
 class PaddingValues {
-  final double paddingTopMax = 200;
-  final double paddingTopNormal = 10;
+  final double paddingTopMax = 130;
+  final double paddingTopNormal = 15;
   final double paddingBottomNormal = 10;
   final double paddingSideTextField = 10;
 }
