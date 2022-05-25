@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Classes/Projects/trext_field_widget.dart/simple_login_page.dart';
+
+import 'Classes/Projects/text_field_widget.dart/password_strenght_level.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SimpleLoginPage(),
+      home: const PasswordStrengthLevel(),
     );
   }
 }
