@@ -172,7 +172,7 @@ class PaddingItems {
 
 class PaddingValues {
   final double paddingTopMax = 90;
-  final double paddingTopNormal = 15;
+  final double paddingTopNormal = 5;
   final double paddingBottomNormal = 10;
   final double paddingSideTextField = 10;
 }
