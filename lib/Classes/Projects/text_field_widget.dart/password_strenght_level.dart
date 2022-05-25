@@ -10,7 +10,8 @@ class PasswordStrengthLevel extends StatefulWidget {
 }
 
 class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
-  final bool _isObscure = false;
+  final String _appBarTitle = "Password Strength Level";
+  bool _isObscure = false;
   String? _password;
 
   final int maxLength = 20;
@@ -18,29 +19,43 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: TextField(
-          keyboardType: TextInputType.visiblePassword,
-          textInputAction: TextInputAction.go,
-          obscureText: _isObscure,
-          maxLength: maxLength,
-          autofocus: true,
-          textAlign: TextAlign.start,
-          onChanged: (_currentPassword) => setState(() {
-            _password = _currentPassword;
-            CheckPassword().checkPassword(_password!);
-          }),
-          decoration: InputDecoration(
-            labelText: "Merhaba",
-            hintText: "Naber",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+      appBar: AppBar(title: Center(child: Text(_appBarTitle))),
+      body: Column(
+        children: [
+          Padding(
+            padding: PaddingSettings().paddingTextField,
+            child: TextField(
+              maxLength: 20,
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.start,
+              textInputAction: TextInputAction.go,
+              autofocus: true,
+              obscureText: _isObscure,
+              onChanged: (text) => setState(() {
+                print(text);
+              }),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                prefixIcon: const Icon(Icons.key),
+                suffixIcon: IconButton(
+                  icon: _isObscure
+                      ? const Icon(Icons.visibility)
+                      : const Icon(Icons.visibility_off),
+                  onPressed: () {
+                    setState(() {
+                      _isObscure = !_isObscure;
+                    });
+                  },
+                ),
+                hintText: "password",
+                labelText: "password",
+                fillColor: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
-            prefix: const Icon(Icons.key_sharp, size: 20),
-            suffix: const Icon(Icons.visibility, size: 20),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -49,6 +64,7 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
 class CheckPassword {
   void checkPassword(String password) {
     if (password.contains('@')) {
+      // ignore: avoid_print
       print("yaho");
     }
   }
@@ -76,6 +92,6 @@ class PaddingSettings {
 }
 
 class PaddingItems {
-  final double paddingVerticalNormal = 10;
+  final double paddingVerticalNormal = 30;
   final double paddingHorizontalNormal = 10;
 }
