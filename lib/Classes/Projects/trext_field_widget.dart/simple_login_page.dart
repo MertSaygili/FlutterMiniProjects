@@ -13,6 +13,8 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
   final TextInputType _keyboardPassword = TextInputType.number;
   final TextInputAction _actionEmail = TextInputAction.next;
   final TextInputAction _actionPassword = TextInputAction.go;
+  final int _maxLengthEmail = 30;
+  final int _maxLengthPassword = 8;
   final String _hintTextEmail = 'user@gmail.com';
   final String _hintTextPassword = 'password';
   final String _labelTextEmail = 'mail';
@@ -33,6 +35,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
               labelText: _labelTextEmail,
               icon: IconItems().iconEmailRounded,
               isObscure: true,
+              length: _maxLengthEmail,
             ),
           ),
           Padding(
@@ -44,6 +47,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
               labelText: _labelTextPassword,
               icon: IconItems().iconKey,
               isObscure: _isObsecure,
+              length: _maxLengthPassword,
             ),
           ),
         ],
@@ -61,6 +65,7 @@ class TextFieldForm extends StatefulWidget {
     required this.labelText,
     required this.icon,
     required this.isObscure,
+    required this.length,
   }) : super(key: key);
 
   final TextInputType keyboard;
@@ -68,6 +73,7 @@ class TextFieldForm extends StatefulWidget {
   final String hintText;
   final String labelText;
   final Icon icon;
+  final int length;
   // ignore: prefer_typing_uninitialized_variables
   final isObscure;
 
@@ -87,11 +93,16 @@ class _TextFieldFormState extends State<TextFieldForm> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      maxLength: widget.length,
       keyboardType: widget.keyboard,
       textAlign: TextAlign.start,
       textInputAction: widget.action,
       autofocus: true,
       obscureText: _isObscure,
+      buildCounter: (BuildContext context,
+          {int? currentLength, bool? isFocused, int? maxLength}) {
+        return _animatedContainer(currentLength);
+      },
       decoration: InputDecoration(
         border: BorderSettings().textFieldBorder(),
         prefixIcon: widget.icon,
@@ -101,6 +112,16 @@ class _TextFieldFormState extends State<TextFieldForm> {
         labelStyle: LabelStyle().labelStyleTextField(),
         fillColor: Theme.of(context).colorScheme.onBackground,
       ),
+    );
+  }
+
+  AnimatedContainer _animatedContainer(int? currentLength) {
+    return AnimatedContainer(
+      key: UniqueKey(),
+      duration: const Duration(seconds: 1),
+      height: 10,
+      width: 40.0 * (currentLength?.toDouble() ?? 0),
+      color: Colors.green[100 * (currentLength ?? 0)],
     );
   }
 
@@ -147,7 +168,7 @@ class PaddingItems {
 }
 
 class PaddingValues {
-  final double paddingTopMax = 130;
+  final double paddingTopMax = 90;
   final double paddingTopNormal = 15;
   final double paddingBottomNormal = 10;
   final double paddingSideTextField = 10;
