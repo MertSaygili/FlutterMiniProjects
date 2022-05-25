@@ -99,10 +99,12 @@ class _TextFieldFormState extends State<TextFieldForm> {
       textInputAction: widget.action,
       autofocus: true,
       obscureText: _isObscure,
+      /*
       buildCounter: (BuildContext context,
           {int? currentLength, bool? isFocused, int? maxLength}) {
         return _animatedContainer(currentLength);
       },
+      */
       decoration: InputDecoration(
         border: BorderSettings().textFieldBorder(),
         prefixIcon: widget.icon,
@@ -114,7 +116,7 @@ class _TextFieldFormState extends State<TextFieldForm> {
       ),
     );
   }
-
+  /*
   AnimatedContainer _animatedContainer(int? currentLength) {
     return AnimatedContainer(
       key: UniqueKey(),
@@ -124,6 +126,7 @@ class _TextFieldFormState extends State<TextFieldForm> {
       color: Colors.green[100 * (currentLength ?? 0)],
     );
   }
+  */
 
   IconButton? visibilityOfPassword() {
     if (widget.hintText == 'password') {
