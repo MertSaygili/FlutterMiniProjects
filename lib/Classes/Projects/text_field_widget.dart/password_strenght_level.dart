@@ -32,24 +32,21 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
               textInputAction: TextInputAction.go,
               autofocus: true,
               obscureText: _isObscure,
-
-              /*
               buildCounter: (BuildContext context,
                   {int? currentLength, bool? isFocused, int? maxLength}) {
                 return Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AnimatedContainer(
                       key: UniqueKey(),
                       duration: const Duration(seconds: 2),
                       height: 20,
-                      width: width + (currentLength! * 10.0),
-                      color: Colors.green,
+                      width: width + (_newWidthPoint * 10.0),
+                      color: pickColor(),
                     ),
                   ],
                 );
               },
-              */
               onChanged: (text) => setState(() {
                 _newWidthPoint = CheckPassword().checkPassword(text)!;
               }),
@@ -62,19 +59,6 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
                 fillColor: Theme.of(context).colorScheme.onBackground,
               ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                child: AnimatedContainer(
-                  duration: const Duration(seconds: 1),
-                  height: 20,
-                  width: _newWidthPoint,
-                  color: Colors.green,
-                ),
-              ),
-            ],
           ),
         ],
       ),
@@ -103,6 +87,16 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
       },
     );
   }
+
+  Color pickColor() {
+    if (_newWidthPoint < 10) {
+      return Colors.red;
+    } else if (_newWidthPoint < 18) {
+      return Colors.yellow;
+    } else {
+      return Colors.green;
+    }
+  }
 }
 
 class CheckPassword {
@@ -111,7 +105,7 @@ class CheckPassword {
   int upperCaseLetterCheckCounter = 0;
   int intCheckCounter = 0;
 
-  int passwordPoint = 0;
+  double passwordPoint = 0;
 
   double? checkPassword(String password) {
     for (int i = 0; i < password.length; i++) {
@@ -123,9 +117,7 @@ class CheckPassword {
       _intCheck(assciCodeOfLetter);
     }
 
-    print(passwordPoint);
-
-    return 0;
+    return passwordPoint;
   }
 
   void _signCheck(int assciCodeOfLetter) {
@@ -165,10 +157,10 @@ class CheckPassword {
 }
 
 class LevelOfPasswordChars {
-  final int _signSize = 5;
-  final int _charSizeLowerCase = 1;
-  final int _charSizeUpperCase = 1;
-  final int _intSize = 1;
+  final int _signSize = 3;
+  final int _charSizeLowerCase = 2;
+  final int _charSizeUpperCase = 3;
+  final int _intSize = 2;
 
   final int _maxLength = 18;
   final int _maxInt = 2;
