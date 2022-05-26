@@ -9,6 +9,7 @@ class PasswordStrengthLevel extends StatefulWidget {
   State<PasswordStrengthLevel> createState() => _PasswordStrengthLevelState();
 }
 
+// clean the code tomorrow
 class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
   final String _appBarTitle = "Password Strength Level";
   final String _hintLabelText = "password";
