@@ -13,7 +13,7 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
   final String _appBarTitle = "Password Strength Level";
   final String _hintLabelText = "password";
   final double width = 0;
-  final int _maxLength = 20;
+  double _newWidthPoint = 0;
   bool _isObscure = false;
   String? _password;
 
@@ -26,12 +26,14 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
           Padding(
             padding: PaddingSettings().paddingTextField,
             child: TextField(
-              maxLength: _maxLength,
+              maxLength: LevelOfPasswordChars()._maxLength,
               keyboardType: TextInputType.visiblePassword,
               textAlign: TextAlign.start,
               textInputAction: TextInputAction.go,
               autofocus: true,
               obscureText: _isObscure,
+
+              /*
               buildCounter: (BuildContext context,
                   {int? currentLength, bool? isFocused, int? maxLength}) {
                 return Row(
@@ -47,8 +49,9 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
                   ],
                 );
               },
+              */
               onChanged: (text) => setState(() {
-                CheckPassword().checkPassword(text);
+                _newWidthPoint = CheckPassword().checkPassword(text)!;
               }),
               decoration: InputDecoration(
                 border: outlineInputBorder(),
@@ -59,6 +62,19 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
                 fillColor: Theme.of(context).colorScheme.onBackground,
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                child: AnimatedContainer(
+                  duration: const Duration(seconds: 1),
+                  height: 20,
+                  width: _newWidthPoint,
+                  color: Colors.green,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -90,37 +106,75 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
 }
 
 class CheckPassword {
-  int checkPassword(String password) {
-    int passwordPoint = 0;
+  int signCheckCounter = 0;
+  int lowerCaseLetterCheckCounter = 0;
+  int upperCaseLetterCheckCounter = 0;
+  int intCheckCounter = 0;
 
+  int passwordPoint = 0;
+
+  double? checkPassword(String password) {
     for (int i = 0; i < password.length; i++) {
-      int assciCodeOfLetter = password[i] as int;
+      int assciCodeOfLetter = password.codeUnitAt(i);
 
-      if ((assciCodeOfLetter >= 32 && assciCodeOfLetter <= 47) ||
-          (assciCodeOfLetter >= 58 && assciCodeOfLetter <= 64) ||
-          (assciCodeOfLetter >= 91 && assciCodeOfLetter <= 96) ||
-          (assciCodeOfLetter >= 123 && assciCodeOfLetter <= 126)) {
-        passwordPoint = passwordPoint + LevelOfPasswordChars()._signSize;
-      }
+      _signCheck(assciCodeOfLetter);
+      _lowerCaseLetterCheck(assciCodeOfLetter);
+      _upperCaseLetterCheck(assciCodeOfLetter);
+      _intCheck(assciCodeOfLetter);
     }
+
     print(passwordPoint);
 
     return 0;
   }
+
+  void _signCheck(int assciCodeOfLetter) {
+    if ((signCheckCounter < LevelOfPasswordChars()._maxSign) &&
+        ((assciCodeOfLetter >= 32 && assciCodeOfLetter <= 47) ||
+            (assciCodeOfLetter >= 58 && assciCodeOfLetter <= 64) ||
+            (assciCodeOfLetter >= 91 && assciCodeOfLetter <= 96) ||
+            (assciCodeOfLetter >= 123 && assciCodeOfLetter <= 126))) {
+      passwordPoint = passwordPoint + LevelOfPasswordChars()._signSize;
+      signCheckCounter++;
+    }
+  }
+
+  void _lowerCaseLetterCheck(int assciCodeOfLetter) {
+    if (lowerCaseLetterCheckCounter < LevelOfPasswordChars()._maxLowerCase &&
+        (assciCodeOfLetter >= 97 && assciCodeOfLetter <= 122)) {
+      passwordPoint = passwordPoint + LevelOfPasswordChars()._charSizeLowerCase;
+      lowerCaseLetterCheckCounter++;
+    }
+  }
+
+  void _upperCaseLetterCheck(int assciCodeOfLetter) {
+    if (upperCaseLetterCheckCounter < LevelOfPasswordChars()._maxUpperCase &&
+        (assciCodeOfLetter >= 65 && assciCodeOfLetter <= 90)) {
+      passwordPoint = passwordPoint + LevelOfPasswordChars()._charSizeUpperCase;
+      lowerCaseLetterCheckCounter++;
+    }
+  }
+
+  void _intCheck(int assciCodeOfLetter) {
+    if (upperCaseLetterCheckCounter < LevelOfPasswordChars()._maxInt &&
+        (assciCodeOfLetter >= 48 && assciCodeOfLetter <= 57)) {
+      passwordPoint = passwordPoint + LevelOfPasswordChars()._intSize;
+      intCheckCounter++;
+    }
+  }
 }
 
 class LevelOfPasswordChars {
-  final int _signSize = 50;
-  final int _charSizeLowerCase = 10;
-  final int _charSizeUpperCase = 10;
-  final int _intSize = 10;
-  final int _length = 10;
+  final int _signSize = 5;
+  final int _charSizeLowerCase = 1;
+  final int _charSizeUpperCase = 1;
+  final int _intSize = 1;
 
-  final maxLength = 12;
-  final maxInt = 2;
-  final maxUpperCase = 2;
-  final maxLowerCase = 6;
-  final maxSign = 2;
+  final int _maxLength = 18;
+  final int _maxInt = 2;
+  final int _maxUpperCase = 2;
+  final int _maxLowerCase = 6;
+  final int _maxSign = 2;
 }
 
 class PaddingSettings {
