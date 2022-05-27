@@ -19,6 +19,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
   final String _hintTextPassword = 'password';
   final String _labelTextEmail = 'mail';
   final String _labelTextPassword = 'password';
+  final String _signInButtonText = 'Sign in';
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +49,18 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
               icon: IconItems().iconKey,
               isObscure: _isObsecure,
               length: _maxLengthPassword,
+            ),
+          ),
+          Padding(
+            padding: PaddingItems().paddingPasswordTextField,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(_signInButtonText),
+                ),
+              ],
             ),
           ),
         ],
@@ -172,7 +185,7 @@ class PaddingItems {
 
 class PaddingValues {
   final double paddingTopMax = 90;
-  final double paddingTopNormal = 5;
+  final double paddingTopNormal = 3;
   final double paddingBottomNormal = 10;
   final double paddingSideTextField = 10;
 }
