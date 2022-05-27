@@ -9,13 +9,12 @@ class PasswordStrengthLevel extends StatefulWidget {
   State<PasswordStrengthLevel> createState() => _PasswordStrengthLevelState();
 }
 
-// clean the code tomorrow
 class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
   final String _appBarTitle = "Password Strength Level";
   final String _hintLabelText = "password";
-  final double width = 0;
-  double _newWidthPoint = 0;
-  bool _isObscure = false;
+  final double _width = 0;
+  final double _newWidthPoint = 0;
+  final bool _isObscure = false;
   String? _password;
 
   @override
@@ -26,48 +25,27 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
         children: [
           Padding(
             padding: PaddingSettings().paddingTextField,
-            child: TextField(
-              maxLength: LevelOfPasswordChars()._maxLength,
-              keyboardType: TextInputType.visiblePassword,
-              textAlign: TextAlign.start,
-              textInputAction: TextInputAction.go,
-              autofocus: true,
-              obscureText: _isObscure,
-              buildCounter: (BuildContext context,
-                  {int? currentLength, bool? isFocused, int? maxLength}) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AnimatedContainer(
-                      key: UniqueKey(),
-                      duration: const Duration(seconds: 2),
-                      height: 20,
-                      width: width + (_newWidthPoint * 10.0),
-                      color: pickColor(),
-                    ),
-                  ],
-                );
-              },
-              onChanged: (text) => setState(() {
-                _newWidthPoint = CheckPassword().checkPassword(text)!;
-              }),
-              decoration: InputDecoration(
-                border: outlineInputBorder(),
-                prefixIcon: const Icon(Icons.key),
-                suffixIcon: visibilityOfButton(),
-                hintText: _hintLabelText,
-                labelText: _hintLabelText,
-                fillColor: Theme.of(context).colorScheme.onBackground,
-              ),
+            child: TextFieldSample(
+              isObscure: _isObscure,
+              newWidthPoint: _newWidthPoint,
+              width: _width,
             ),
           ),
         ],
       ),
     );
   }
+}
 
-  double calculateWidth() {
-    return 1;
+class TextFieldMethods {
+  Color pickColor(_newWidthPoint) {
+    if (_newWidthPoint < 10) {
+      return Colors.red;
+    } else if (_newWidthPoint < 18) {
+      return Colors.yellow;
+    } else {
+      return Colors.green;
+    }
   }
 
   OutlineInputBorder outlineInputBorder() {
@@ -76,27 +54,96 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
     );
   }
 
+  AnimatedContainer animatedContainer(width, _newWidthPoint) {
+    return AnimatedContainer(
+      key: UniqueKey(),
+      duration: const Duration(seconds: 2),
+      height: 20,
+      width: width + (_newWidthPoint * 10.0),
+      color: TextFieldMethods().pickColor(_newWidthPoint),
+    );
+  }
+
+  InputDecoration inputDecoration(
+      BuildContext context, visibilityOfButton, _hintLabelText) {
+    return InputDecoration(
+      border: TextFieldMethods().outlineInputBorder(),
+      prefixIcon: const Icon(Icons.key),
+      suffixIcon: visibilityOfButton(),
+      hintText: _hintLabelText,
+      labelText: _hintLabelText,
+      fillColor: Theme.of(context).colorScheme.onBackground,
+    );
+  }
+}
+
+class TextFieldSample extends StatefulWidget {
+  final double width;
+  final bool isObscure;
+  final double newWidthPoint;
+
+  const TextFieldSample(
+      {Key? key,
+      required this.isObscure,
+      required this.width,
+      required this.newWidthPoint})
+      : super(key: key);
+
+  @override
+  State<TextFieldSample> createState() => _TextFieldSampleState();
+}
+
+class _TextFieldSampleState extends State<TextFieldSample> {
+  bool? _isObscure;
+  double? _newWidthPoint;
+
+  @override
+  void initState() {
+    super.initState();
+    _isObscure = widget.isObscure;
+    _newWidthPoint = widget.newWidthPoint;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      maxLength: LevelOfPasswordChars()._maxLength,
+      keyboardType: TextInputType.visiblePassword,
+      textAlign: TextAlign.start,
+      textInputAction: TextInputAction.go,
+      autofocus: true,
+      obscureText: widget.isObscure,
+      buildCounter: (BuildContext context,
+          {int? currentLength, bool? isFocused, int? maxLength}) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFieldMethods().animatedContainer(widget.width, _newWidthPoint),
+          ],
+        );
+      },
+      onChanged: (text) => setState(() {
+        _newWidthPoint = CheckPassword().checkPassword(text)!;
+      }),
+      decoration: TextFieldMethods().inputDecoration(
+        context,
+        visibilityOfButton(),
+        _newWidthPoint,
+      ),
+    );
+  }
+
   IconButton visibilityOfButton() {
     return IconButton(
-      icon: _isObscure
+      icon: widget.isObscure
           ? const Icon(Icons.visibility)
           : const Icon(Icons.visibility_off),
       onPressed: () {
         setState(() {
-          _isObscure = !_isObscure;
+          _isObscure = !_isObscure!;
         });
       },
     );
-  }
-
-  Color pickColor() {
-    if (_newWidthPoint < 10) {
-      return Colors.red;
-    } else if (_newWidthPoint < 18) {
-      return Colors.yellow;
-    } else {
-      return Colors.green;
-    }
   }
 }
 
