@@ -8,13 +8,13 @@ class SimpleLoginPage extends StatefulWidget {
 }
 
 class _SimpleLoginPageState extends State<SimpleLoginPage> {
-  final _isObsecure = false;
+  final _isObscure = true;
   final TextInputType _keyboardEmail = TextInputType.emailAddress;
   final TextInputType _keyboardPassword = TextInputType.number;
   final TextInputAction _actionEmail = TextInputAction.next;
   final TextInputAction _actionPassword = TextInputAction.go;
   final int _maxLengthEmail = 30;
-  final int _maxLengthPassword = 8;
+  final int _maxLengthPassword = 16;
   final String _hintTextEmail = 'user@gmail.com';
   final String _hintTextPassword = 'password';
   final String _labelTextEmail = 'mail';
@@ -35,7 +35,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
               hintText: _hintTextEmail,
               labelText: _labelTextEmail,
               icon: IconItems().iconEmailRounded,
-              isObscure: true,
+              isObscure: _isObscure,
               length: _maxLengthEmail,
             ),
           ),
@@ -47,7 +47,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
               hintText: _hintTextPassword,
               labelText: _labelTextPassword,
               icon: IconItems().iconKey,
-              isObscure: _isObsecure,
+              isObscure: _isObscure,
               length: _maxLengthPassword,
             ),
           ),
@@ -87,8 +87,7 @@ class TextFieldForm extends StatefulWidget {
   final String labelText;
   final Icon icon;
   final int length;
-  // ignore: prefer_typing_uninitialized_variables
-  final isObscure;
+  final bool isObscure;
 
   @override
   State<TextFieldForm> createState() => _TextFieldFormState();

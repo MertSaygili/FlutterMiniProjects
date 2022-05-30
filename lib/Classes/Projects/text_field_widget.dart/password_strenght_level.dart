@@ -1,6 +1,3 @@
-// ignore_for_file: unused_field
-// check password strenght leven done
-// merhaba
 import 'package:flutter/material.dart';
 
 class PasswordStrengthLevel extends StatefulWidget {
@@ -10,14 +7,12 @@ class PasswordStrengthLevel extends StatefulWidget {
   State<PasswordStrengthLevel> createState() => _PasswordStrengthLevelState();
 }
 
-// naber lan
 class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
   final String _appBarTitle = "Password Strength Level";
   final String _hintLabelText = "password";
   final double _width = 0;
   final double _newWidthPoint = 0;
-  final bool _isObscure = false;
-  String? _password;
+  final bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +23,10 @@ class _PasswordStrengthLevelState extends State<PasswordStrengthLevel> {
           Padding(
             padding: PaddingSettings().paddingTextField,
             child: TextFieldSample(
-              isObscure: _isObscure,
               newWidthPoint: _newWidthPoint,
               width: _width,
+              hintLabelText: _hintLabelText,
+              isObscure: _isObscure,
             ),
           ),
         ],
@@ -66,6 +62,7 @@ class TextFieldMethods {
     );
   }
 
+  /*
   InputDecoration inputDecoration(
       BuildContext context, visibilityOfButton, _hintLabelText) {
     return InputDecoration(
@@ -77,18 +74,21 @@ class TextFieldMethods {
       fillColor: Theme.of(context).colorScheme.onBackground,
     );
   }
+  */
 }
 
 class TextFieldSample extends StatefulWidget {
   final double width;
   final bool isObscure;
   final double newWidthPoint;
+  final String hintLabelText;
 
   const TextFieldSample(
       {Key? key,
       required this.isObscure,
       required this.width,
-      required this.newWidthPoint})
+      required this.newWidthPoint,
+      required this.hintLabelText})
       : super(key: key);
 
   @override
@@ -96,7 +96,7 @@ class TextFieldSample extends StatefulWidget {
 }
 
 class _TextFieldSampleState extends State<TextFieldSample> {
-  bool? _isObscure;
+  bool _isObscure = true;
   double? _newWidthPoint;
 
   @override
@@ -114,7 +114,7 @@ class _TextFieldSampleState extends State<TextFieldSample> {
       textAlign: TextAlign.start,
       textInputAction: TextInputAction.go,
       autofocus: true,
-      obscureText: widget.isObscure,
+      obscureText: _isObscure,
       buildCounter: (BuildContext context,
           {int? currentLength, bool? isFocused, int? maxLength}) {
         return Row(
@@ -127,22 +127,25 @@ class _TextFieldSampleState extends State<TextFieldSample> {
       onChanged: (text) => setState(() {
         _newWidthPoint = CheckPassword().checkPassword(text)!;
       }),
-      decoration: TextFieldMethods().inputDecoration(
-        context,
-        visibilityOfButton(),
-        _newWidthPoint,
+      decoration: InputDecoration(
+        border: TextFieldMethods().outlineInputBorder(),
+        prefixIcon: const Icon(Icons.key),
+        suffixIcon: visibilityIcon(),
+        hintText: widget.hintLabelText,
+        labelText: widget.hintLabelText,
+        fillColor: Theme.of(context).colorScheme.onBackground,
       ),
     );
   }
 
-  IconButton visibilityOfButton() {
+  IconButton visibilityIcon() {
     return IconButton(
-      icon: widget.isObscure
+      icon: _isObscure
           ? const Icon(Icons.visibility)
           : const Icon(Icons.visibility_off),
       onPressed: () {
         setState(() {
-          _isObscure = !_isObscure!;
+          _isObscure = !_isObscure;
         });
       },
     );
