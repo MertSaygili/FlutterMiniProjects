@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({Key? key}) : super(key: key);
+class TabBarBasic extends StatefulWidget {
+  const TabBarBasic({Key? key}) : super(key: key);
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<TabBarBasic> createState() => _TabBarBasicState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _TabBarBasicState extends State<TabBarBasic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
