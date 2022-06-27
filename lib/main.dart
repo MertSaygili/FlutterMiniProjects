@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Classes/Projects/text_field_widget.dart/password_strenght_level.dart';
-import 'Classes/Projects/text_field_widget.dart/simple_login_page.dart';
+import 'Classes/Projects/tab_bar/tab_bar_basic_interview/tab_bar_basic.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PasswordStrengthLevel(),
+      home: const TabBarBasic(),
     );
   }
 }
-// denemeasdasdsad
