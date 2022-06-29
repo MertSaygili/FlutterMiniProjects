@@ -19,5 +19,7 @@ class TextContent {
   final String textFirebase = 'Firebase';
   final String textCloudFunctions = 'CloudFunctions';
 
+  final String next = 'Next';
+
   int check = 0;
 }
