@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/exprience.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/skills.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/submit.dart';
 import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/text.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/text_field_widget.dart/password_strenght_level.dart';
 
 class TabBarBasic extends StatefulWidget {
   const TabBarBasic({Key? key}) : super(key: key);
@@ -39,8 +40,8 @@ class _TabBarBasicState extends State<TabBarBasic>
         ),
         body: const TabBarView(children: [
           ExperienceView(),
-          PasswordStrengthLevel(),
-          PasswordStrengthLevel(),
+          Skills(),
+          Submit(),
         ]),
       ),
     );

@@ -10,23 +10,17 @@ class ExperienceView extends StatefulWidget {
 }
 
 class _ExperienceViewState extends State<ExperienceView> {
-  final String _bodyTitle = "How many years of experience you have?";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-        child: Column(
-          children: [
-            Text(TextContent().titleExperience,
-                style: const TextStyle(fontSize: 16)), // title
-            RowModel(text: TextContent().textExperience1), // first row
-            RowModel(text: TextContent().textExperience2),
-            RowModel(text: TextContent().textExperience3), // first row
-            RowModel(text: TextContent().textExperience4), // first row
-          ],
-        ),
+      body: Column(
+        children: [
+          ListTile(title: Text(TextContent().titleExperience)),
+          RowModel(text: TextContent().textExperience1), // first row
+          RowModel(text: TextContent().textExperience2),
+          RowModel(text: TextContent().textExperience3), // first row
+          RowModel(text: TextContent().textExperience4), // first row
+        ],
       ),
     );
   }

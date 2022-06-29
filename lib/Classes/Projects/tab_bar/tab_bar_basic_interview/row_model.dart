@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/text.dart';
 
 class RowModel extends StatefulWidget {
   const RowModel({Key? key, required this.text}) : super(key: key);
