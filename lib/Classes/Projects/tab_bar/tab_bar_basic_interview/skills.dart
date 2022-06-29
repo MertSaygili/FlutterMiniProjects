@@ -23,7 +23,24 @@ class _SkillsState extends State<Skills> {
           RowModel(text: TextContent().textDart),
           RowModel(text: TextContent().textFirebase),
           RowModel(text: TextContent().textCloudFunctions),
+          nextButton(),
         ],
+      ),
+    );
+  }
+
+  ElevatedButton nextButton() {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 100),
+        child: Text(
+          TextContent().next,
+          style: const TextStyle(fontSize: 19),
+        ),
+      ),
+      style: ElevatedButton.styleFrom(
+        primary: Colors.green,
       ),
     );
   }
