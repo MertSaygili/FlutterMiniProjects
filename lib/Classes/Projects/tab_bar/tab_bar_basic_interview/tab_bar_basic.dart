@@ -1,4 +1,5 @@
 // ignore_for_file: constant_identifier_names
+// TAB BAR BASIC PROJESININ MIMARISINI TAM OTURTAMADIM FARKLI BIR DOSYA ICINDE YAPACAGIM
 
 import 'package:flutter/material.dart';
 import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/exprience.dart';
