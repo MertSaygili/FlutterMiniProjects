@@ -22,6 +22,8 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
     'I Will Survive',
   ];
 
+  Color color = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,41 +35,53 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
         itemBuilder: (context, index) {
           return Padding(
             padding: PaddingItems().paddingScreen,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(
-                  color: Colors.white,
-                ),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  primary: Colors.white,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Image.asset('assets/img/_shape-on-you.jpg'),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: ListTile(
-                        title: Text(LSongs[index]),
-                        subtitle: Text(lSingers[index]),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            child: cardModel(index),
           );
         },
       ),
+    );
+  }
+
+  Card cardModel(int index) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: color,
+        ),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: elevatedButtons(index),
+    );
+  }
+
+  ElevatedButton elevatedButtons(int index) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.zero,
+        primary: Colors.white,
+      ),
+      child: rowModel(index),
+    );
+  }
+
+  Row rowModel(int index) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 2,
+          child: Image.asset('assets/img/_shape-on-you.jpg'),
+        ),
+        Expanded(
+          flex: 4,
+          child: ListTile(
+            title: Text(LSongs[index]),
+            subtitle: Text(lSingers[index]),
+          ),
+        ),
+      ],
     );
   }
 }
