@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/Projects/list_view_builder/list_view_builder.dart';
+import 'Classes/Projects/navigation/navigation_page1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ListViewBuilder(),
+      home: const NavigationPageOne(),
     );
   }
 }
