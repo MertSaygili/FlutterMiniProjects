@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/Projects/tab_bar/tab_bar_basic_bottom_tab_bar/bottom_tap_bar.dart';
+import 'Classes/Projects/tab_bar/tab_bar_basic_interview_0/tab_bar_basic.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BottomTapBar(),
+      home: const TabBarBasic(),
     );
   }
 }

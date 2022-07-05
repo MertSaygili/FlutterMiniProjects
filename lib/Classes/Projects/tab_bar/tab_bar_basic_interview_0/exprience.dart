@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/row_model.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/skills.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/text.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_0/row_model.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_0/text.dart';
 
 class ExperienceView extends StatefulWidget {
   const ExperienceView({Key? key}) : super(key: key);

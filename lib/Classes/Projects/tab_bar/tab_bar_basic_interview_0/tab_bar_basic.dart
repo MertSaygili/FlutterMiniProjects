@@ -2,10 +2,10 @@
 // TAB BAR BASIC PROJESININ MIMARISINI TAM OTURTAMADIM FARKLI BIR DOSYA ICINDE YAPACAGIM
 
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/exprience.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/skills.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/submit.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/text.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_0/exprience.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_0/skills.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_0/submit.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_0/text.dart';
 
 class TabBarBasic extends StatefulWidget {
   const TabBarBasic({Key? key}) : super(key: key);
