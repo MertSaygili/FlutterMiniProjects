@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_1/skills.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_1/submit.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview_1/experience.dart';
 
 class InterviewPage extends StatefulWidget {
   const InterviewPage({Key? key}) : super(key: key);
@@ -10,13 +13,6 @@ class InterviewPage extends StatefulWidget {
 class _InterviewPageState extends State<InterviewPage>
     with TickerProviderStateMixin {
   final String _titleAppBar = 'Flutter Application';
-  late final TabController _tabController;
-  @override
-  void initState() {
-    super.initState();
-    _tabController =
-        TabController(length: _TabBarSelections.values.length, vsync: this);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +23,18 @@ class _InterviewPageState extends State<InterviewPage>
           centerTitle: true,
           title: Text(_titleAppBar),
           bottom: TabBar(
-            controller: _tabController,
+            isScrollable: false,
+            indicatorWeight: 3,
             tabs:
                 _TabBarSelections.values.map((e) => Tab(text: e.name)).toList(),
           ),
+        ),
+        body: const TabBarView(
+          children: [
+            Experience(),
+            Skills(),
+            Submit(),
+          ],
         ),
       ),
     );
