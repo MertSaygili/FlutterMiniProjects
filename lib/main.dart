@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/Projects/tab_bar/tab_bar_basic_interview_0/tab_bar_basic.dart';
+import 'Classes/Projects/tab_bar/tab_bar_basic_bottom_tab_bar/interview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const TabBarBasic(),
+      home: const InterviewPage(),
     );
   }
 }
