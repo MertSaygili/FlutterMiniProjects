@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/Projects/tab_bar/tab_bar_basic_bottom_tab_bar/interview.dart';
+import 'Classes/Projects/tab_bar/tab_bar_basic_interview_1/interview.dart';
 
 void main() {
   runApp(const MyApp());
