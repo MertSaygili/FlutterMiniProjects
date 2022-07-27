@@ -10,24 +10,38 @@ class ExperiencePageView extends StatefulWidget {
 }
 
 class _ExperiencePageViewState extends State<ExperiencePageView> {
-  bool _throwShotAway = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          CheckboxListTile(
-            controlAffinity: ListTileControlAffinity.leading,
-            title: const Text('merhaba cnaim'),
-            value: _throwShotAway,
-            onChanged: (bool? newValue) {
-              setState(() {
-                _throwShotAway = !_throwShotAway;
-              });
-            },
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'How many years of experience do you have?',
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+            checkBox('Less than one year'),
+            checkBox('One to three years'),
+            checkBox('Three to five years'),
+            checkBox('Over five years'),
+          ],
+        ),
       ),
+    );
+  }
+
+  clearCheckBoxes() {
+    setState(() {});
+  }
+
+  CheckboxListTile checkBox(String text) {
+    return CheckboxListTile(
+      controlAffinity: ListTileControlAffinity.leading,
+      title: Text(text),
+      value: true,
+      onChanged: (bool? newValue) {},
     );
   }
 }
