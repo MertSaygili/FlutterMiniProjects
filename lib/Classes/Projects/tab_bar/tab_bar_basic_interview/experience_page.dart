@@ -22,7 +22,7 @@ class _ExperiencePageViewState extends State<ExperiencePageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 18),
+        padding: PaddingItems().paddingPage,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,19 +31,10 @@ class _ExperiencePageViewState extends State<ExperiencePageView> {
             checkBox(_checkBoxOptionTwo),
             checkBox(_checkBoxOptionThree),
             checkBox(_checkBoxOptionFour),
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: PaddingItems().paddingButton,
-                ),
-                onPressed: () {
-                  widget.controller.animateTo(1);
-                },
-                child: Text(
-                  Strings().next,
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-              ),
+            CenteredElevatedButton(
+              indexNumber: 1,
+              controller: widget.controller,
+              text: Strings().next,
             ),
           ],
         ),
@@ -56,10 +47,36 @@ class _ExperiencePageViewState extends State<ExperiencePageView> {
       controlAffinity: ListTileControlAffinity.leading,
       title: Text(
         text,
-        style: Theme.of(context).textTheme.subtitle2,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       value: false,
       onChanged: (bool? newValue) {},
+    );
+  }
+}
+
+class CenteredElevatedButton extends StatelessWidget {
+  const CenteredElevatedButton({
+    Key? key,
+    required this.indexNumber,
+    required this.controller,
+    required this.text,
+  }) : super(key: key);
+
+  final int indexNumber;
+  final TabController controller;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(padding: PaddingItems().paddingButton),
+        onPressed: () {
+          controller.animateTo(indexNumber);
+        },
+        child: Text(text, style: Theme.of(context).textTheme.subtitle1),
+      ),
     );
   }
 }
@@ -69,9 +86,16 @@ class PaddingItems {
     vertical: PaddingValues().paddingButtonVertical,
     horizontal: PaddingValues().paddingButtonHorizontal,
   );
+  EdgeInsets paddingPage = EdgeInsets.symmetric(
+    vertical: PaddingValues().paddingPageVertical,
+    horizontal: PaddingValues().paddingPageHorizontal,
+  );
 }
 
 class PaddingValues {
   final double paddingButtonVertical = 15;
   final double paddingButtonHorizontal = 165;
+
+  final double paddingPageVertical = 24;
+  final double paddingPageHorizontal = 18;
 }

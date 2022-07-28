@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/experience_page.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/skills_page.dart';
 
 import 'data/strings.dart';
 
@@ -48,14 +49,7 @@ class _MainPageViewState extends State<MainPageView>
         controller: _controller,
         children: [
           ExperiencePageView(controller: _controller),
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                _controller.animateTo(0);
-              },
-              child: const Text('GO TO DATA PAGE'),
-            ),
-          ),
+          SkillsPageView(controller: _controller),
           Center(
             child: ElevatedButton(
               onPressed: () {
