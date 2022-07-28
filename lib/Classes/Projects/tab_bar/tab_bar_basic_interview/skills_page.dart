@@ -68,6 +68,7 @@ class _SkillsPageViewState extends State<SkillsPageView> {
               value: false,
               onChanged: (bool? newValue) {},
             ),
+            const Spacer(),
             CenteredElevatedButton(
               indexNumber: 2,
               controller: widget.controller,
