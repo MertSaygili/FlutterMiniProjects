@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'Classes/Projects/tab_bar/tab_bar_basic_interview/main_page.dart';
+import 'Uplabs/login_panels/login_0/login_page_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainPageView(),
+      home: const LoginPageViewOne(),
     );
   }
 }
