@@ -12,6 +12,10 @@ class CustomTheme {
           color: AllColors().colorWhite,
           fontSize: FontSizes().titleFontSize,
         ),
+        subtitle2: TextStyle(
+          color: AllColors().colorBlue,
+          fontSize: FontSizes().buttonFontSize,
+        ),
       ),
     );
   }
