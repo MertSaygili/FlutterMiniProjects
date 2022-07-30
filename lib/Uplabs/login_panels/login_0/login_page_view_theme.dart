@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'login_page_view.dart';
+
 class CustomTheme {
-  static ThemeData get lightTheme {
-    return ThemeData(
-      textTheme: const TextTheme(),
+  late ThemeData theme;
+  CustomTheme() {
+    theme = ThemeData(
+      fontFamily: 'RobotoMono',
+      textTheme: TextTheme(
+        headline5: TextStyle(
+          color: AllColors().colorWhite,
+          fontSize: FontSizes().titleFontSize,
+        ),
+      ),
     );
   }
 }

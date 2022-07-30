@@ -27,7 +27,7 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
                   color: Colors.transparent,
                 ),
                 Positioned(
-                  top: 5,
+                  top: 0,
                   left: _screenWidth / 3,
                   child: Container(
                     height: 80,
@@ -42,7 +42,7 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
                   top: 5,
                   left: _screenWidth / 8,
                   child: Container(
-                    height: 100,
+                    height: 90,
                     width: _screenWidth / 2,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
@@ -51,15 +51,10 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
                   ),
                 ),
                 Positioned(
-                  top: _screenHeight / 22,
-                  left: _screenWidth / 2.9,
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(
-                        // fontFamily: 'RobotoMono',
-                        //fontWeight: FontWeight.w500,
-                        fontSize: 24),
-                  ),
+                  top: _screenHeight / 24,
+                  left: _screenWidth / 3.1,
+                  child: Text(_loginTitle,
+                      style: Theme.of(context).textTheme.headline5),
                 ),
               ],
             ),
@@ -70,17 +65,10 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
   }
 }
 
-class CustomTheme {
-  late ThemeData theme;
+class FontSizes {
+  final double titleFontSize = 28;
+}
 
-  CustomTheme() {
-    theme = ThemeData(
-      textTheme: const TextTheme(
-        headline5: TextStyle(
-          color: Colors.white,
-          fontSize: 30,
-        ),
-      ),
-    );
-  }
+class AllColors {
+  Color colorWhite = Colors.white;
 }
