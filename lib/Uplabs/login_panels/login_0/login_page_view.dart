@@ -13,6 +13,11 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
   late final double _screenWidth = MediaQuery.of(context).size.width;
   late final double _screenHeight = MediaQuery.of(context).size.height;
 
+  final TextInputType _inputTypeEmail = TextInputType.emailAddress;
+  final TextInputType _inputTypePassword = TextInputType.none;
+  final String _labelEmailText = 'Email ID / Phone no.';
+  final String _labelPasswordText = 'Password';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +73,31 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
               ],
             ),
             Padding(padding: PaddingItems().paddingNormal),
+            textFormField(context, _inputTypeEmail, _labelEmailText),
+            Padding(padding: PaddingItems().paddingSmall),
+            textFormField(context, _inputTypePassword, _labelPasswordText),
           ],
+        ),
+      ),
+    );
+  }
+
+  TextFormField textFormField(
+      BuildContext context, TextInputType _inputType, String _hint) {
+    return TextFormField(
+      keyboardType: _inputType,
+      textInputAction: TextInputAction.next,
+      autocorrect: true,
+      style: Theme.of(context).textTheme.subtitle1,
+      decoration: InputDecoration(
+        hintText: _hint,
+        hintStyle: Theme.of(context).textTheme.subtitle2,
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AllColors().colorBlue)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AllColors().colorBlueDark)),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: AllColors().colorBlue),
         ),
       ),
     );
@@ -104,7 +133,7 @@ class SignInTextButton extends StatelessWidget {
               text: _signInWith,
               style: Theme.of(context).textTheme.subtitle2,
             ),
-            WidgetSpan(child: AllIcons().iconApple),
+            WidgetSpan(child: icon),
           ],
         ),
       ),
@@ -184,16 +213,21 @@ class PaddingItems {
   EdgeInsets paddingNormal = EdgeInsets.symmetric(
     vertical: PaddingValues().paddingNormalVertical,
   );
+  EdgeInsets paddingSmall = EdgeInsets.symmetric(
+    vertical: PaddingValues().paddingSmallVertical,
+  );
 }
 
 class PaddingValues {
   final double paddingPageVertical = 60;
   final double paddingPageHorizontal = 40;
-  final double paddingNormalVertical = 10;
+  final double paddingNormalVertical = 20;
+  final double paddingSmallVertical = 5;
 }
 
 class FontSizes {
   final double titleFontSize = 28;
+  final double textFontSize = 16;
   final double buttonFontSize = 14;
 }
 
@@ -203,6 +237,7 @@ class AllColors {
   Color colorWhite = Colors.white;
   Color colorOrangeAccent = Colors.orangeAccent;
   Color colorBlue = Colors.blue;
+  Color colorBlueDark = const Color.fromARGB(255, 2, 131, 196);
 }
 
 class AllIcons {
