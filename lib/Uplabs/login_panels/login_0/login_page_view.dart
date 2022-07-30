@@ -16,41 +16,34 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 40),
         child: Column(
           children: [
             Stack(
               children: [
-                Container(
+                CircleContainer(
                   height: _screenHeight / 6,
                   width: _screenWidth,
-                  color: Colors.transparent,
+                  color: AllColors().colorTransparent,
                 ),
-                Positioned(
+                PositionedCircleContainer(
+                  screenWidth: _screenWidth,
                   top: 0,
                   left: _screenWidth / 3,
-                  child: Container(
-                    height: 80,
-                    width: _screenWidth / 4,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.orangeAccent,
-                    ),
-                  ),
+                  height: 80,
+                  width: 4,
+                  color: AllColors().colorOrangeAccent,
                 ),
-                Positioned(
+                PositionedCircleContainer(
+                  screenWidth: _screenWidth,
                   top: 5,
                   left: _screenWidth / 8,
-                  child: Container(
-                    height: 90,
-                    width: _screenWidth / 2,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.blue,
-                    ),
-                  ),
+                  height: 90,
+                  width: 2,
+                  color: AllColors().colorBlue,
                 ),
                 Positioned(
+                  // text
                   top: _screenHeight / 24,
                   left: _screenWidth / 3.1,
                   child: Text(_loginTitle,
@@ -65,10 +58,71 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
   }
 }
 
+class PositionedCircleContainer extends StatelessWidget {
+  const PositionedCircleContainer({
+    Key? key,
+    required double screenWidth,
+    required this.top,
+    required this.left,
+    required this.height,
+    required this.color,
+    required this.width,
+  })  : _screenWidth = screenWidth,
+        super(key: key);
+
+  final double _screenWidth;
+  final double height;
+  final double top;
+  final double left;
+  final double width;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: top,
+      left: left,
+      child: CircleContainer(
+        height: height,
+        width: _screenWidth / width,
+        color: color,
+      ),
+    );
+  }
+}
+
+class CircleContainer extends StatelessWidget {
+  const CircleContainer({
+    Key? key,
+    required this.height,
+    required this.width,
+    required this.color,
+  }) : super(key: key);
+
+  final double height;
+  final double width;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: color,
+      ),
+    );
+  }
+}
+
 class FontSizes {
   final double titleFontSize = 28;
 }
 
 class AllColors {
+  Color colorTransparent = Colors.transparent;
   Color colorWhite = Colors.white;
+  Color colorOrangeAccent = Colors.orangeAccent;
+  Color colorBlue = Colors.blue;
 }
