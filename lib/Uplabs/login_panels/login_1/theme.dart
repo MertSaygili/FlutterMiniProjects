@@ -7,20 +7,32 @@ class CustomTheme {
     theme = ThemeData(
       fontFamily: 'RobotoMono',
       textTheme: TextTheme(
-        headline3: TextStyle(
-          fontSize: FontSizes().titleFontSize,
-          fontWeight: FontWeight.bold,
-          color: AllColors().colorBlack,
-        ),
-      ),
+          headline3: TextStyle(
+            fontSize: FontSizes()._titleFontSize,
+            fontWeight: FontWeight.bold,
+            color: AllColors().colorBlack,
+          ),
+          bodyText1: TextStyle(
+            fontSize: FontSizes()._textFontSize,
+            color: AllColors().colorDarkGrey,
+            wordSpacing: -5,
+          ),
+          bodyText2: TextStyle(
+            fontSize: FontSizes()._textFontSize,
+            color: AllColors().colorBlue,
+            wordSpacing: -5,
+          )),
     );
   }
 }
 
 class FontSizes {
-  final double titleFontSize = 40;
+  final double _titleFontSize = 40;
+  final double _textFontSize = 14;
 }
 
 class AllColors {
   Color colorBlack = Colors.black;
+  Color colorBlue = Colors.blue;
+  Color colorDarkGrey = Color.fromARGB(255, 119, 117, 117);
 }

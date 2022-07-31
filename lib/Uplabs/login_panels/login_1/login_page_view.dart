@@ -17,12 +17,6 @@ class _LoginPageViewState extends State<LoginPageView> {
       style: Theme.of(context).textTheme.headline3,
     );
 
-    final RichText _text = RichText(
-      text: const TextSpan(
-        children: [],
-      ),
-    );
-
     return Scaffold(
       body: Center(
         child: ListView(
