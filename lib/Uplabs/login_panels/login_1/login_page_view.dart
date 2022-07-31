@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+import 'Data/data.dart';
 
 class LoginPageView extends StatefulWidget {
   const LoginPageView({Key? key}) : super(key: key);
@@ -12,13 +12,24 @@ class LoginPageView extends StatefulWidget {
 class _LoginPageViewState extends State<LoginPageView> {
   @override
   Widget build(BuildContext context) {
+    final Text _title = Text(
+      Strings().loginText,
+      style: Theme.of(context).textTheme.headline3,
+    );
+
+    final RichText _text = RichText(
+      text: const TextSpan(
+        children: [],
+      ),
+    );
+
     return Scaffold(
       body: Center(
         child: ListView(
           shrinkWrap: true,
           padding: PaddingItems().paddingPage,
-          children: const [
-            Text('data'),
+          children: [
+            _title,
           ],
         ),
       ),
