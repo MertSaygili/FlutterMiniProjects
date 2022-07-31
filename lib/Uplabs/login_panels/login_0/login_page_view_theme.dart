@@ -20,6 +20,11 @@ class CustomTheme {
           color: AllColors().colorBlue,
           fontSize: FontSizes().textFontSize,
         ),
+        button: TextStyle(
+          fontSize: FontSizes().buttonFontSize,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
       ),
     );
   }

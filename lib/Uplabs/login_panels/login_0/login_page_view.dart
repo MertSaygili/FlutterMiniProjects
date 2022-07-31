@@ -9,6 +9,9 @@ class LoginPageViewOne extends StatefulWidget {
 
 class _LoginPageViewOneState extends State<LoginPageViewOne> {
   final String _loginTitle = 'Login';
+  final String _signUp = 'Sign up';
+  final String _signInWith = 'Sign in with ';
+
   final String _or = 'OR';
   late final double _screenWidth = MediaQuery.of(context).size.width;
   late final double _screenHeight = MediaQuery.of(context).size.height;
@@ -60,8 +63,10 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SignInTextButton(icon: AllIcons().iconApple),
-                SignInTextButton(icon: AllIcons().iconFacebook),
+                SignInTextButton(
+                    icon: AllIcons().iconApple, signInWith: _signInWith),
+                SignInTextButton(
+                    icon: AllIcons().iconFacebook, signInWith: _signInWith),
               ],
             ),
             Padding(padding: PaddingItems().paddingNormal),
@@ -76,7 +81,49 @@ class _LoginPageViewOneState extends State<LoginPageViewOne> {
             textFormField(context, _inputTypeEmail, _labelEmailText),
             Padding(padding: PaddingItems().paddingSmall),
             textFormField(context, _inputTypePassword, _labelPasswordText),
+            Padding(padding: PaddingItems().paddingSmall),
+            Row(
+              children: [
+                Expanded(child: customElevatedButton(context, _loginTitle)),
+              ],
+            ),
+            Padding(padding: PaddingItems().paddingSmall),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Text('Forgot password? ',
+                      style: Theme.of(context).textTheme.subtitle2),
+                ),
+                const Expanded(
+                  flex: 1,
+                  child: SignInTextButton(
+                    icon: Icon(Icons.hourglass_empty, size: 0),
+                    signInWith: 'Reset Password',
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
+            Row(
+              children: [
+                Expanded(child: customElevatedButton(context, _signUp)),
+              ],
+            ),
           ],
+        ),
+      ),
+    );
+  }
+
+  ElevatedButton customElevatedButton(BuildContext context, String text) {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Padding(
+        padding: PaddingItems().paddingNormal,
+        child: Text(
+          text,
+          style: Theme.of(context).textTheme.button,
         ),
       ),
     );
@@ -117,9 +164,10 @@ class SignInTextButton extends StatelessWidget {
   const SignInTextButton({
     Key? key,
     required this.icon,
+    required this.signInWith,
   }) : super(key: key);
 
-  final String _signInWith = 'Sign in with ';
+  final String signInWith;
   final Icon icon;
 
   @override
@@ -130,7 +178,7 @@ class SignInTextButton extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text: _signInWith,
+              text: signInWith,
               style: Theme.of(context).textTheme.subtitle2,
             ),
             WidgetSpan(child: icon),
@@ -220,9 +268,9 @@ class PaddingItems {
 
 class PaddingValues {
   final double paddingPageVertical = 60;
-  final double paddingPageHorizontal = 40;
-  final double paddingNormalVertical = 20;
-  final double paddingSmallVertical = 5;
+  final double paddingPageHorizontal = 38;
+  final double paddingNormalVertical = 15;
+  final double paddingSmallVertical = 6;
 }
 
 class FontSizes {
