@@ -7,4 +7,5 @@ class Strings {
   final String userPasswordHintText = 'Password';
   final String rememberMeText = 'Remember me';
   final String forgotPassword = 'Forgot password ?';
+  final String orLoginWith = 'Or login with';
 }
