@@ -9,11 +9,6 @@ class LoginPageView extends StatefulWidget {
 }
 
 class _LoginPageViewState extends State<LoginPageView> {
-  final String _userNameHintText = 'Username';
-  final String _userPasswordHintText = 'Password';
-  final String _rememberMeText = 'Remember me';
-  final String _forgotPassword = 'Forgot password ?';
-  final String _loginText = 'Login';
   bool _rememberMe = false;
 
   @override
@@ -51,7 +46,7 @@ class _LoginPageViewState extends State<LoginPageView> {
         decoration: textFieldInputDecoration(
           context,
           UsedIcons().iconPerson,
-          _userNameHintText,
+          Strings().userNameHintText,
         ),
       ),
     );
@@ -63,7 +58,7 @@ class _LoginPageViewState extends State<LoginPageView> {
         decoration: textFieldInputDecoration(
           context,
           UsedIcons().iconLock,
-          _userPasswordHintText,
+          Strings().userPasswordHintText,
         ),
       ),
     );
@@ -82,7 +77,7 @@ class _LoginPageViewState extends State<LoginPageView> {
                   _changeRememberMeButton();
                 },
                 title: Text(
-                  _rememberMeText,
+                  Strings().rememberMeText,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
@@ -92,7 +87,7 @@ class _LoginPageViewState extends State<LoginPageView> {
             child: TextButton(
               onPressed: () {},
               child: Text(
-                _forgotPassword,
+                Strings().forgotPassword,
                 textAlign: TextAlign.right,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
@@ -101,19 +96,23 @@ class _LoginPageViewState extends State<LoginPageView> {
         ],
       ),
     );
-    final ElevatedButton _loginButton = ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.zero,
-        elevation: 17,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+    final Row _loginButton = Row(
+      children: [
+        Padding(
+          padding: PaddingItems().paddingVerticalSmall,
+          child: SizedBox(
+            height: 60,
+            width: 150,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                Strings().loginText.toUpperCase(),
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ),
+          ),
         ),
-      ),
-      onPressed: () {},
-      child: Text(
-        Strings().loginText.toUpperCase(),
-        style: Theme.of(context).textTheme.labelMedium,
-      ),
+      ],
     );
     return Scaffold(
       body: Center(

@@ -15,7 +15,7 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
     'Frank Sinatra',
     'Gloria Gaynor',
   ];
-  List<String> LSongs = [
+  List<String> lSongs = [
     'Heroes',
     'Wicked Game',
     'My Way',
@@ -77,7 +77,7 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
         Expanded(
           flex: 4,
           child: ListTile(
-            title: Text(LSongs[index]),
+            title: Text(lSongs[index]),
             subtitle: Text(lSingers[index]),
           ),
         ),
