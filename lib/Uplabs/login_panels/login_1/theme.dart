@@ -29,6 +29,11 @@ class CustomTheme {
           color: AllColors().colorDarkGrey,
           letterSpacing: 1,
         ),
+        labelMedium: TextStyle(
+          fontSize: FontSizes()._buttonFontSize,
+          fontWeight: FontWeight.w700,
+          color: AllColors().colorWhite,
+        ),
       ),
     );
   }
@@ -36,11 +41,13 @@ class CustomTheme {
 
 class FontSizes {
   final double _titleFontSize = 40;
+  final double _buttonFontSize = 18;
   final double _textFontSize = 14;
 }
 
 class AllColors {
+  Color colorWhite = Colors.white;
   Color colorBlack = Colors.black;
   Color colorBlue = Colors.blue;
-  Color colorDarkGrey = Color.fromARGB(255, 119, 117, 117);
+  Color colorDarkGrey = const Color.fromARGB(255, 119, 117, 117);
 }

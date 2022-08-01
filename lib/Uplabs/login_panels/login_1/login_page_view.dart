@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Uplabs/login_panels/login_0/login_page_view.dart';
-
 import 'Data/data.dart';
 
 class LoginPageView extends StatefulWidget {
@@ -13,6 +11,10 @@ class LoginPageView extends StatefulWidget {
 class _LoginPageViewState extends State<LoginPageView> {
   final String _userNameHintText = 'Username';
   final String _userPasswordHintText = 'Password';
+  final String _rememberMeText = 'Remember me';
+  final String _forgotPassword = 'Forgot password ?';
+  final String _loginText = 'Login';
+  bool _rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +48,71 @@ class _LoginPageViewState extends State<LoginPageView> {
       child: TextFormField(
         keyboardType: TextInputType.name,
         textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          suffixIcon: UsedIcons().iconPerson,
-          hintText: _userNameHintText,
-          hintStyle: Theme.of(context).textTheme.button,
+        decoration: textFieldInputDecoration(
+          context,
+          UsedIcons().iconPerson,
+          _userNameHintText,
         ),
+      ),
+    );
+    final Padding _userPassword = Padding(
+      padding: PaddingItems().paddingVerticalNormal,
+      child: TextFormField(
+        keyboardType: TextInputType.visiblePassword,
+        textInputAction: TextInputAction.done,
+        decoration: textFieldInputDecoration(
+          context,
+          UsedIcons().iconLock,
+          _userPasswordHintText,
+        ),
+      ),
+    );
+    final Padding _rememberMeAndForgotPassword = Padding(
+      padding: PaddingItems().paddingVerticalNormal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: GestureDetector(
+              child: CheckboxListTile(
+                contentPadding: EdgeInsets.zero,
+                value: _rememberMe,
+                controlAffinity: ListTileControlAffinity.leading,
+                onChanged: (bool? value) {
+                  _changeRememberMeButton();
+                },
+                title: Text(
+                  _rememberMeText,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: TextButton(
+              onPressed: () {},
+              child: Text(
+                _forgotPassword,
+                textAlign: TextAlign.right,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    final ElevatedButton _loginButton = ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.zero,
+        elevation: 17,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      onPressed: () {},
+      child: Text(
+        Strings().loginText.toUpperCase(),
+        style: Theme.of(context).textTheme.labelMedium,
       ),
     );
     return Scaffold(
@@ -62,16 +124,34 @@ class _LoginPageViewState extends State<LoginPageView> {
             _title,
             _text,
             _userName,
+            _userPassword,
+            _rememberMeAndForgotPassword,
+            _loginButton,
           ],
         ),
       ),
     );
   }
+
+  InputDecoration textFieldInputDecoration(
+      BuildContext context, Icon icon, String hintText) {
+    return InputDecoration(
+      suffixIcon: icon,
+      hintText: hintText,
+      hintStyle: Theme.of(context).textTheme.button,
+    );
+  }
+
+  void _changeRememberMeButton() {
+    setState(() {
+      _rememberMe = !_rememberMe;
+    });
+  }
 }
 
 class UsedIcons {
   Icon iconPerson = const Icon(Icons.person);
-  Icon iconPassword = const Icon(Icons.lock);
+  Icon iconLock = const Icon(Icons.lock);
 }
 
 class PaddingItems {
@@ -83,10 +163,15 @@ class PaddingItems {
   final EdgeInsets paddingVerticalNormal = EdgeInsets.only(
     top: PaddingValues().paddingNormalVertical,
   );
+
+  final EdgeInsets paddingVerticalSmall = EdgeInsets.only(
+    top: PaddingValues().paddingSmallVertical,
+  );
 }
 
 class PaddingValues {
   final double paddingPageVertical = 30;
   final double paddingPageHorizontal = 30;
   final double paddingNormalVertical = 20;
+  final double paddingSmallVertical = 10;
 }
