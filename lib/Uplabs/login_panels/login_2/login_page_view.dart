@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Data/data.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -8,26 +10,44 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final String _imageNameMorningPath = 'assets/img/morning.jpg';
-  final String _imageNameNightPath = 'assets/img/night2.jpg';
-
   late String _currentImagePath;
 
   @override
   void initState() {
     super.initState();
-    _currentImagePath = _imageNameMorningPath;
+    _currentImagePath = ImagePaths().morningLoginMode;
   }
 
-  void _changeToBackgroundMode() {
-    setState(() {
-      if (_currentImagePath.compareTo(_imageNameMorningPath) == 0) {
-        _currentImagePath = _imageNameNightPath;
-      } else {
-        _currentImagePath = _imageNameMorningPath;
-      }
-    });
-  }
+  final Stack _changeLoginMod = Stack(
+    children: [
+      Align(
+        alignment: Alignment.center,
+        child: ElevatedButton(
+          child: const SizedBox(
+            width: 200,
+            child: Text(
+              'Sign out',
+              textAlign: TextAlign.right,
+            ),
+          ),
+          onPressed: () {},
+        ),
+      ),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: ElevatedButton(
+          child: const SizedBox(
+            width: 100,
+            child: Text(
+              'Sign out',
+              textAlign: TextAlign.left,
+            ),
+          ),
+          onPressed: () {},
+        ),
+      ),
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +60,23 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         child: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              _changeToBackgroundMode();
-            },
-            child: const Text('change'),
+          child: ListView(
+            children: [
+              _changeLoginMod,
+            ],
           ),
         ),
       ),
     );
+  }
+
+  void _changeToBackgroundMode() {
+    setState(() {
+      if (_currentImagePath.compareTo(ImagePaths().morningLoginMode) == 0) {
+        _currentImagePath = ImagePaths().nightLoginMode;
+      } else {
+        _currentImagePath = ImagePaths().morningLoginMode;
+      }
+    });
   }
 }
