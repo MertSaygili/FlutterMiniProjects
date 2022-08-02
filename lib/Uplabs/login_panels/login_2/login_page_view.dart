@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:project1_change_appbar_color/Uplabs/login_panels/login_2/theme/theme.dart';
 import 'Data/data.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,46 +11,64 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   late String _currentImagePath;
+  late String _currentTitle;
 
   @override
   void initState() {
     super.initState();
-    _currentImagePath = ImagePaths().morningLoginMode;
+    _currentImagePath = ImagePaths().nightLoginMode;
+    _currentTitle = Strings().titleGoodNight;
   }
-
-  final Stack _changeLoginMod = Stack(
-    children: [
-      Align(
-        alignment: Alignment.center,
-        child: ElevatedButton(
-          child: const SizedBox(
-            width: 200,
-            child: Text(
-              'Sign out',
-              textAlign: TextAlign.right,
-            ),
-          ),
-          onPressed: () {},
-        ),
-      ),
-      Align(
-        alignment: Alignment.centerLeft,
-        child: ElevatedButton(
-          child: const SizedBox(
-            width: 100,
-            child: Text(
-              'Sign out',
-              textAlign: TextAlign.left,
-            ),
-          ),
-          onPressed: () {},
-        ),
-      ),
-    ],
-  );
 
   @override
   Widget build(BuildContext context) {
+    final Row _changeModButtons = Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        ElevatedButton(
+          style: _buttonStyle(Strings().titleGoodMorning),
+          onPressed: () {
+            _changeToMorningMode();
+          },
+          child: Text(
+            Strings().morningLoginButton,
+            style: TextStyle(
+              fontSize: FontSizes().medium,
+              letterSpacing: -2,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        ElevatedButton(
+          style: _buttonStyle(Strings().titleGoodNight),
+          onPressed: () {
+            _changeToNightMode();
+          },
+          child: Text(
+            Strings().nightLoginButton,
+            style: TextStyle(
+              fontSize: FontSizes().medium,
+              letterSpacing: -2,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ],
+    );
+    final Padding _title = Padding(
+      padding: PaddingItems().paddingVerticalNormal,
+      child: Text(
+        _currentTitle,
+        style: Theme.of(context).textTheme.headline1,
+      ),
+    );
+    final Padding _subTitle = Padding(
+      padding: PaddingItems().paddingVerticalSmall,
+      child: Text(
+        Strings().subtitle,
+        style: Theme.of(context).textTheme.subtitle1,
+      ),
+    );
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -59,10 +77,13 @@ class _LoginPageState extends State<LoginPage> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Center(
+        child: Padding(
+          padding: PaddingItems().paddingPage,
           child: ListView(
             children: [
-              _changeLoginMod,
+              _changeModButtons,
+              _title,
+              _subTitle,
             ],
           ),
         ),
@@ -70,13 +91,70 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _changeToBackgroundMode() {
+  ButtonStyle _buttonStyle(String title) {
+    if (_currentTitle.compareTo(title) == 0) {
+      // this is for active login mode
+      return ElevatedButton.styleFrom(
+        primary: AllColors().white,
+        onPrimary: AllColors().black,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        animationDuration: const Duration(milliseconds: 500),
+      );
+    } else {
+      return ElevatedButton.styleFrom(
+        primary: AllColors().transparent,
+        onPrimary: AllColors().white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        animationDuration: const Duration(milliseconds: 500),
+      );
+    }
+  }
+
+  void _changeToMorningMode() {
     setState(() {
-      if (_currentImagePath.compareTo(ImagePaths().morningLoginMode) == 0) {
-        _currentImagePath = ImagePaths().nightLoginMode;
-      } else {
-        _currentImagePath = ImagePaths().morningLoginMode;
-      }
+      _currentImagePath = ImagePaths().morningLoginMode;
+      _currentTitle = Strings().titleGoodMorning;
     });
   }
+
+  void _changeToNightMode() {
+    setState(() {
+      _currentImagePath = ImagePaths().nightLoginMode;
+      _currentTitle = Strings().titleGoodNight;
+    });
+  }
+}
+
+class PaddingItems {
+  final EdgeInsets paddingPage = EdgeInsets.symmetric(
+    horizontal: PaddingValues().paddingPageHorizontal,
+    vertical: PaddingValues().paddingPageVertical,
+  );
+
+  final EdgeInsets paddingVerticalNormal = EdgeInsets.only(
+    top: PaddingValues().paddingNormalVertical,
+    left: PaddingValues().paddingSmallHorizontal,
+  );
+
+  final EdgeInsets paddingVerticalSmall = EdgeInsets.only(
+    top: PaddingValues().paddingSmallVertical,
+    left: PaddingValues().paddingSmallHorizontal,
+  );
+  final EdgeInsets paddingVerticalHigh = EdgeInsets.only(
+    top: PaddingValues().paddingHighVertical,
+    left: PaddingValues().paddingSmallHorizontal,
+  );
+}
+
+class PaddingValues {
+  final double paddingHighVertical = 50;
+  final double paddingPageVertical = 40;
+  final double paddingPageHorizontal = 40;
+  final double paddingNormalVertical = 20;
+  final double paddingSmallVertical = 10;
+  final double paddingSmallHorizontal = 3;
 }

@@ -10,5 +10,5 @@ class Strings {
 
 class ImagePaths {
   final String morningLoginMode = 'assets/img/morning.jpg';
-  final String nightLoginMode = 'assets/img/night1.jpg';
+  final String nightLoginMode = 'assets/img/night2.jpg';
 }
