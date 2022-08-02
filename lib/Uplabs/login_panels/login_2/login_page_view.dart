@@ -121,6 +121,26 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+    final Padding _nextButton = Padding(
+      padding: PaddingItems().paddingVerticalHigh,
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: AllColors().white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          onPressed: () {},
+          child: Icon(
+            Icons.arrow_right_alt_outlined,
+            size: 60,
+            color: AllColors().black,
+          ),
+        ),
+      ),
+    );
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -138,6 +158,7 @@ class _LoginPageState extends State<LoginPage> {
               _subTitle,
               _userName,
               _userPassword,
+              _nextButton,
             ],
           ),
         ),

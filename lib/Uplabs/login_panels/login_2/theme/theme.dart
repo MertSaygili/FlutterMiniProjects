@@ -42,5 +42,5 @@ class AllColors {
   Color white = Colors.white;
   Color black = Colors.black;
   Color darkGray = const Color.fromARGB(255, 19, 18, 18);
-  Color lightGray = Color.fromARGB(255, 208, 206, 206);
+  Color lightGray = const Color.fromARGB(255, 208, 206, 206);
 }
