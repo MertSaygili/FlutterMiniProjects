@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/text_field_widget.dart/simple_login_page.dart';
 import 'package:project1_change_appbar_color/Uplabs/login_panels/login_2/theme/theme.dart';
 import 'Data/data.dart';
 
@@ -69,6 +70,57 @@ class _LoginPageState extends State<LoginPage> {
         style: Theme.of(context).textTheme.subtitle1,
       ),
     );
+    final Padding _userName = Padding(
+      padding: PaddingItems().paddingVerticalNormal,
+      child: ListTile(
+        title: Text(
+          Strings().phoneNumberLabel,
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+        contentPadding: EdgeInsets.zero,
+        subtitle: TextFormField(
+          keyboardType: TextInputType.phone,
+          textInputAction: TextInputAction.next,
+          autocorrect: true,
+          decoration: InputDecoration(
+            semanticCounterText: Strings().phoneNumberLabel,
+            hintText: Strings().phoneNumberLabel,
+            hintStyle: Theme.of(context).textTheme.subtitle1,
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: AllColors().darkGray)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+    );
+    final Padding _userPassword = Padding(
+      padding: PaddingItems().paddingVerticalNormal,
+      child: ListTile(
+        title: Text(
+          Strings().passwordLabel,
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+        contentPadding: EdgeInsets.zero,
+        subtitle: TextFormField(
+          keyboardType: TextInputType.visiblePassword,
+          textInputAction: TextInputAction.done,
+          autocorrect: true,
+          obscureText: true,
+          decoration: InputDecoration(
+            semanticCounterText: Strings().passwordLabel,
+            hintText: Strings().passwordLabel,
+            hintStyle: Theme.of(context).textTheme.subtitle1,
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: AllColors().black)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+    );
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -84,6 +136,8 @@ class _LoginPageState extends State<LoginPage> {
               _changeModButtons,
               _title,
               _subTitle,
+              _userName,
+              _userPassword,
             ],
           ),
         ),

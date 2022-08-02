@@ -21,6 +21,11 @@ class CustomTheme {
           letterSpacing: -1,
           wordSpacing: -2,
         ),
+        subtitle2: TextStyle(
+          fontSize: FontSizes().small,
+          fontWeight: FontWeight.w300,
+          color: AllColors().lightGray,
+        ),
       ),
     );
   }
@@ -36,4 +41,6 @@ class AllColors {
   Color transparent = Colors.transparent;
   Color white = Colors.white;
   Color black = Colors.black;
+  Color darkGray = const Color.fromARGB(255, 19, 18, 18);
+  Color lightGray = Color.fromARGB(255, 208, 206, 206);
 }

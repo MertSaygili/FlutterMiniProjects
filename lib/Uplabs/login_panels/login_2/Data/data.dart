@@ -3,7 +3,7 @@ class Strings {
   final String nightLoginButton = 'Night login';
   final String titleGoodMorning = 'Good Morning,';
   final String titleGoodNight = 'Good Night,';
-  final String subtitle = 'Enter your informations below';
+  final String subtitle = 'Enter your informations below.';
   final String phoneNumberLabel = 'Phone number';
   final String passwordLabel = 'Password';
 }
