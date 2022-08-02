@@ -69,6 +69,9 @@ flutter:
     - assets/img/_shape-on-you.jpg
     - assets/img/me.jpg
     - assets/img/butterfly.png
+    - assets/img/morning.jpg
+    - assets/img/night.jpg
+    - assets/img/night2.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

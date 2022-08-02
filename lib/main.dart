@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Uplabs/login_panels/login_1/login_page_view.dart';
-import 'Uplabs/login_panels/login_1/theme.dart';
+import 'Uplabs/login_panels/login_2/login_page_view.dart';
+import 'Uplabs/login_panels/login_2/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: CustomTheme().theme,
-      home: const LoginPageView(),
+      home: const LoginPage(),
     );
   }
 }
