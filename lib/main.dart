@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Uplabs/login_panels/login_2/login_page_view.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/text_file/read_write.dart';
+import 'package:project1_change_appbar_color/Classes/Projects/text_file/read_write_to_file.dart';
 import 'Uplabs/login_panels/login_2/theme/theme.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: CustomTheme().theme,
-      home: const LoginPage(),
+      home: ReadWriteToFile(storage: CounterStorage()),
     );
   }
 }
