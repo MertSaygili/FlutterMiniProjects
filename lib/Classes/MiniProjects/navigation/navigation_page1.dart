@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/navigation/navigation_page2.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/navigation/navigation_page4.dart';
 
+import 'navigation_page2.dart';
 import 'navigation_page3.dart';
+import 'navigation_page4.dart';
 
 class NavigationPageOne extends StatefulWidget {
   const NavigationPageOne({Key? key}) : super(key: key);

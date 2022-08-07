@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/text_field_widget.dart/simple_login_page.dart';
 import 'package:project1_change_appbar_color/Uplabs/login_panels/login_2/theme/theme.dart';
 import 'Data/data.dart';
 

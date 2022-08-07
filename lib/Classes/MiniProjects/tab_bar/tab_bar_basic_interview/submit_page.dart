@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/experience_page.dart';
 
 import 'data/strings.dart';
+import 'experience_page.dart';
 
 class SubmitPageView extends StatefulWidget {
   const SubmitPageView({Key? key, required this.controller}) : super(key: key);

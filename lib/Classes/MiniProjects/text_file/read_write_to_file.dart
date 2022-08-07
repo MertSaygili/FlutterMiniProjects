@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/text_file/read_write.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/text_file/read_write.dart';
 
 class ReadWriteToFile extends StatefulWidget {
   const ReadWriteToFile({Key? key, required this.storage}) : super(key: key);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/experience_page.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/skills_page.dart';
-import 'package:project1_change_appbar_color/Classes/Projects/tab_bar/tab_bar_basic_interview/submit_page.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/tab_bar/tab_bar_basic_interview/skills_page.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/tab_bar/tab_bar_basic_interview/submit_page.dart';
 
 import 'data/strings.dart';
+import 'experience_page.dart';
 
 class MainPageView extends StatefulWidget {
   const MainPageView({Key? key}) : super(key: key);

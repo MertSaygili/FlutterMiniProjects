@@ -30,8 +30,14 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # sign in buttons
   flutter_signin_button: ^2.0.0
+
+  # path provider
   path_provider: ^2.0.11
+
+  # shared pereferences
+  shared_preferences: ^2.0.15
 
 
 
