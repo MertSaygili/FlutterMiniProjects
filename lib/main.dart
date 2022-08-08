@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'PubDev/shared_preferences/restaurant_form_app.dart/form_page_view.dart';
-import 'PubDev/shared_preferences/restaurant_form_app.dart/theme/theme.dart';
+import 'Uplabs/Calculator/calculator_shared_preferences_0/calculator_main_page.dart';
+import 'Uplabs/login_panels/login_2/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: CustomTheme().theme,
-      home: const FormPageView(),
+      home: const CalculatorMainPage(),
     );
   }
 }
