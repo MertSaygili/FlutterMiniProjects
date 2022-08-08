@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Uplabs/Calculator/calculator_shared_preferences_0/calculator_main_page.dart';
-import 'Uplabs/login_panels/login_2/theme/theme.dart';
+import 'Uplabs/Calculator/calculator_shared_preferences_0/themes/custom_theme.dart';
 
 void main() {
   runApp(const MyApp());
