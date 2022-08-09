@@ -43,7 +43,6 @@ class _CalculatorMainPageState extends State<CalculatorMainPage>
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        type: BottomNavigationBarType.shifting,
         items: [
           BottomNavigationBarItem(
             icon: IconItems().iconCalculator,

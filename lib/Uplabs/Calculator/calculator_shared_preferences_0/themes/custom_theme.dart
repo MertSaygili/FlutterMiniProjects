@@ -6,27 +6,48 @@ class CustomTheme {
   late final ThemeData theme;
   late final ColorItems _colors;
   late final FontItems _fonts;
+  late final IconItems _icons;
 
   CustomTheme() {
     _colors = ColorItems();
     _fonts = FontItems();
+    _icons = IconItems();
 
     theme = ThemeData(
+      fontFamily: 'RobotoMono',
       textTheme: TextTheme(
+        // for title, question
         headline6: TextStyle(
-            // for title, question
-            fontSize: _fonts.fontSizeNormal,
-            color: _colors.colorIconSelected),
+          fontSize: _fonts.fontSizeNormal,
+          fontWeight: FontWeight.w300,
+          color: _colors.colorDarkGray,
+        ),
+        // for subtitle, answer
         subtitle1: TextStyle(
           fontSize: _fonts.fontSizeBig,
+          fontWeight: FontWeight.w500,
           color: _colors.colorWhite,
-        ), // for subtitle, answer
+        ),
+        button: TextStyle(
+          fontSize: _fonts.fontSizeExtraLarge,
+          fontWeight: FontWeight.w600,
+          color: _colors.colorWhite,
+        ),
       ),
+
+      // navigation bar theme
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        selectedIconTheme: IconThemeData(
+          color: _colors.colorIconSelected,
+          size: _icons.iconSizeBig,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: _colors.colorIconUnselected,
+          size: _icons.iconSizeNormal,
+        ),
+        type: BottomNavigationBarType.shifting,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedItemColor: _colors.colorIconSelected,
-        unselectedItemColor: _colors.colorIconUnselected,
       ),
     );
   }
