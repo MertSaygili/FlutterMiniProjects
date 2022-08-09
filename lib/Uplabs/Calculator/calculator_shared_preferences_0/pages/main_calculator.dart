@@ -10,12 +10,11 @@ class MainCalculatorPage extends StatefulWidget {
 }
 
 class _MainCalculatorPageState extends State<MainCalculatorPage> {
-  late String _text;
+  final String _text = '4321';
 
   @override
   void initState() {
     super.initState();
-    _text = '';
   }
 
   @override
@@ -29,16 +28,29 @@ class _MainCalculatorPageState extends State<MainCalculatorPage> {
             Column(
               children: [
                 Container(
-                  color: Colors.red,
-                  height: 200,
+                  color: Colors.transparent,
+                  height: 180,
                   width: 400,
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: ListTile(
-                      title: Text(_text),
-                      subtitle: Text(_text),
+                      title: Text(
+                        // for question
+                        _text,
+                        textAlign: TextAlign.right,
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      subtitle: Text(
+                        // for answer
+                        _text,
+                        textAlign: TextAlign.right,
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
                     ),
                   ),
+                ),
+                Divider(
+                  color: ColorItems().colorIconSelected,
                 )
               ],
             ),

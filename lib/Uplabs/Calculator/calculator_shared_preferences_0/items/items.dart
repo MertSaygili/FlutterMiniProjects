@@ -19,6 +19,12 @@ class ColorItems {
   final Color colorIconSelected = const Color.fromRGBO(0, 243, 255, 10);
 }
 
+class FontItems {
+  final double fontSizeSmall = 14;
+  final double fontSizeNormal = 18;
+  final double fontSizeBig = 24;
+}
+
 class PaddingItems {
   final EdgeInsets paddingPage = EdgeInsets.symmetric(
     vertical: PaddingValues().paddingVerticalPage,
