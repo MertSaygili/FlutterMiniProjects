@@ -83,7 +83,26 @@ class _MainCalculatorPageState extends State<MainCalculatorPage> {
       width: HeightWidthItems().smallWidth,
       child: ElevatedButton(
         onPressed: () {
-          setState(() {});
+          setState(() {
+            switch (text) {
+              case '=': // calculate
+                break;
+              case 'C': //clear
+                _text = '';
+                break;
+              case '': // when user clicked to icon
+                if (_text.compareTo('ERROR') == 0) {
+                  _text = '';
+                } else if (_text != '') {
+                  _text = _text.substring(0, _text.length - 1);
+                } else {
+                  _text = 'ERROR';
+                }
+                break;
+              default: // number
+                _text = _text + text;
+            }
+          });
         },
         style: ElevatedButton.styleFrom(
           elevation: _elevation,
