@@ -10,7 +10,7 @@ class MainCalculatorPage extends StatefulWidget {
 }
 
 class _MainCalculatorPageState extends State<MainCalculatorPage> {
-  final String _text = '4321';
+  String _text = '4321';
 
   @override
   void initState() {
@@ -37,33 +37,55 @@ class _MainCalculatorPageState extends State<MainCalculatorPage> {
                   ),
                 ),
                 const CustomDivider(thickness: 1.3),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      height: HeightWidthItems().smallHeight,
-                      width: HeightWidthItems().smallWidth,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          elevation: 20,
-                          primary: ColorItems().colorBackgroundNavigation,
-                          onPrimary: ColorItems().colorIconSelected,
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'C',
-                            style: Theme.of(context).textTheme.button,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
+                Padding(
+                  padding: PaddingItems().paddingVerticalOnlySmall,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      customButton(
+                          context, '7', ColorItems().colorIconUnselected),
+                      customButton(
+                          context, '8', ColorItems().colorIconUnselected),
+                      customButton(
+                          context, '9', ColorItems().colorIconUnselected),
+                      customButton(
+                          context, '/', ColorItems().colorIconUnselected),
+                      customButton(
+                          context, 'X', ColorItems().colorIconUnselected),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  SizedBox customButton(BuildContext context, String text, Color color) {
+    double _elevation = 15;
+    double _borderRadiusVal = 10;
+    BorderRadius _borderRadius = BorderRadius.circular(_borderRadiusVal);
+
+    return SizedBox(
+      height: HeightWidthItems().smallHeight,
+      width: HeightWidthItems().smallWidth,
+      child: ElevatedButton(
+        onPressed: () {
+          setState(() {
+            _text = _text + text;
+          });
+        },
+        style: ElevatedButton.styleFrom(
+          elevation: _elevation,
+          primary: color,
+          shadowColor: ColorItems().colorDarkGray,
+          shape: RoundedRectangleBorder(borderRadius: _borderRadius),
+        ),
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(text, style: Theme.of(context).textTheme.button),
         ),
       ),
     );

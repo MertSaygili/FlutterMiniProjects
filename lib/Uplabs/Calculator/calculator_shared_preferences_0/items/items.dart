@@ -32,17 +32,21 @@ class PaddingItems {
     vertical: PaddingValues().paddingVerticalPage,
     horizontal: PaddingValues().paddingHorizontalPage,
   );
+  final EdgeInsets paddingVerticalOnlySmall = EdgeInsets.symmetric(
+    vertical: PaddingValues().paddingVerticalSmall,
+  );
 }
 
 class PaddingValues {
   final double paddingVerticalPage = 20;
-  final double paddingHorizontalPage = 10;
+  final double paddingHorizontalPage = 15;
+  final double paddingVerticalSmall = 10;
 }
 
 class HeightWidthItems {
   final double maxWidth = 400;
   final double normalHeight = 180;
 
-  final double smallWidth = 80;
-  final double smallHeight = 60;
+  final double smallWidth = 65;
+  final double smallHeight = 65;
 }
