@@ -19,13 +19,13 @@ class CustomTheme {
         // for title, question
         headline6: TextStyle(
           fontSize: _fonts.fontSizeNormal,
-          fontWeight: FontWeight.w300,
+          fontWeight: FontWeight.w500,
           color: _colors.colorDarkGray,
         ),
         // for subtitle, answer
         subtitle1: TextStyle(
           fontSize: _fonts.fontSizeBig,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           color: _colors.colorWhite,
         ),
         button: TextStyle(

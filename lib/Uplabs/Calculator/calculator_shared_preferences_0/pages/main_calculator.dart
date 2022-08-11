@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:project1_change_appbar_color/Uplabs/Calculator/calculator_shared_preferences_0/pages/calculator_main_page.dart';
+
+import '../classes/calculate.dart';
 import '../items/items.dart';
 
 class MainCalculatorPage extends StatefulWidget {
@@ -62,68 +66,78 @@ class _MainCalculatorPageState extends State<MainCalculatorPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          customButton(context, line[0], ColorItems().colorDarkGray, null),
-          customButton(context, line[1], ColorItems().colorDarkGray, null),
-          customButton(context, line[2], ColorItems().colorDarkGray,
-              IconItems().iconChevronLeft),
-          customButton(context, line[3], ColorItems().colorDarkGray, null),
+          customButton(context, line[0], null),
+          customButton(context, line[1], null),
+          customButton(context, line[2], IconItems().iconChevronLeft),
+          customButton(context, line[3], null),
         ],
       ),
     );
   }
 
-  SizedBox customButton(
-      BuildContext context, String text, Color color, Icon? iconX) {
+  SizedBox customButton(BuildContext context, String text, Icon? iconX) {
+    Color _color = ColorItems().colorDarkGray;
     double _elevation = 20;
     double _borderRadiusVal = 15;
     BorderRadius _borderRadius = BorderRadius.circular(_borderRadiusVal);
+    const String _error = 'ERROR';
+
+    void _switchCase() {
+      setState(() {
+        switch (text) {
+          case '=': // calculate
+            Calculate().calculate(_text);
+            break;
+          case 'C': //clear
+            _text = '';
+            break;
+          case '': // when user clicked to icon
+            if (_text.compareTo(_error) == 0) {
+              _text = '';
+            } else if (_text != '') {
+              _text = _text.substring(0, _text.length - 1);
+            } else {
+              _text = _error;
+            }
+            break;
+          default: // number
+            _text = _text + text;
+        }
+      });
+    }
+
+    Widget setButtonText(String text, Icon? iconX) {
+      if (iconX != null && text == '') {
+        return iconX;
+      } else {
+        int asciiCode = text.codeUnitAt(0);
+
+        if (asciiCode < 48 || asciiCode > 57) {
+          _color = ColorItems().colorIconUnselected;
+          return Text(text,
+              style: TextStyle(color: ColorItems().colorIconSelected));
+        }
+        return Text(text, style: Theme.of(context).textTheme.button);
+      }
+    }
 
     return SizedBox(
       height: HeightWidthItems().smallHeight,
       width: HeightWidthItems().smallWidth,
       child: ElevatedButton(
-        onPressed: () {
-          setState(() {
-            switch (text) {
-              case '=': // calculate
-                break;
-              case 'C': //clear
-                _text = '';
-                break;
-              case '': // when user clicked to icon
-                if (_text.compareTo('ERROR') == 0) {
-                  _text = '';
-                } else if (_text != '') {
-                  _text = _text.substring(0, _text.length - 1);
-                } else {
-                  _text = 'ERROR';
-                }
-                break;
-              default: // number
-                _text = _text + text;
-            }
-          });
-        },
+        onPressed: _switchCase,
+        child: Align(
+          alignment: Alignment.center,
+          child: setButtonText(text, iconX),
+        ),
         style: ElevatedButton.styleFrom(
           elevation: _elevation,
-          primary: color,
+          primary: _color,
           shadowColor: ColorItems().colorDarkGray,
           shape: RoundedRectangleBorder(borderRadius: _borderRadius),
         ),
-        child: Align(
-          alignment: Alignment.center,
-          child: x(text, iconX),
-        ),
       ),
     );
-  }
-
-  Widget x(String text, Icon? iconX) {
-    if (iconX != null && text == '') {
-      return iconX;
-    } else {
-      return Text(text, style: Theme.of(context).textTheme.button);
-    }
   }
 }
 

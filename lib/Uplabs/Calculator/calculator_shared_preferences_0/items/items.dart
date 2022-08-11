@@ -15,6 +15,7 @@ class ColorItems {
   final Color colorWhite = Colors.white;
   final Color colorYellow = Colors.yellow;
   final Color colorDarkGray = const Color.fromARGB(255, 50, 51, 51);
+  final Color colorLightGray = Color.fromARGB(255, 53, 52, 52);
   final Color colorBackgroundNavigation = const Color.fromRGBO(33, 69, 87, 100);
   final Color colorBackgroundPages = const Color.fromRGBO(34, 40, 49, 80);
   final Color colorIconUnselected = const Color.fromRGBO(0, 243, 181, 100);
