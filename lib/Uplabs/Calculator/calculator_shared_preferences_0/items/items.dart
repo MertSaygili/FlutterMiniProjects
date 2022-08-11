@@ -4,6 +4,7 @@ class IconItems {
   final Icon iconCalculator = const Icon(Icons.calculate);
   final Icon iconFunction = const Icon(Icons.functions);
   final Icon iconHistory = const Icon(Icons.history);
+  final Icon iconChevronLeft = const Icon(Icons.delete_sharp);
 
   final double iconSizeNormal = 24;
   final double iconSizeBig = 30;
@@ -34,19 +35,21 @@ class PaddingItems {
   );
   final EdgeInsets paddingVerticalOnlySmall = EdgeInsets.symmetric(
     vertical: PaddingValues().paddingVerticalSmall,
+    horizontal: PaddingValues().paddingHorizontalSmall,
   );
 }
 
 class PaddingValues {
   final double paddingVerticalPage = 20;
-  final double paddingHorizontalPage = 15;
-  final double paddingVerticalSmall = 10;
+  final double paddingHorizontalPage = 20;
+  final double paddingVerticalSmall = 5;
+  final double paddingHorizontalSmall = 5;
 }
 
 class HeightWidthItems {
   final double maxWidth = 400;
   final double normalHeight = 180;
 
-  final double smallWidth = 65;
-  final double smallHeight = 65;
+  final double smallWidth = 75;
+  final double smallHeight = 60;
 }

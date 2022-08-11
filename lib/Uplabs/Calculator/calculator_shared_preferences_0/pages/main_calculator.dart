@@ -10,7 +10,13 @@ class MainCalculatorPage extends StatefulWidget {
 }
 
 class _MainCalculatorPageState extends State<MainCalculatorPage> {
-  String _text = '4321';
+  String _text = '';
+
+  List<String> firstLine = ['C', '%', '/', 'X'];
+  List<String> secondLine = ['7', '8', '9', '-'];
+  List<String> thirdLine = ['4', '5', '6', '+'];
+  List<String> fourthLine = ['1', '2', '3', '='];
+  List<String> fifthLine = ['.', '0', '', '='];
 
   @override
   void initState() {
@@ -37,24 +43,11 @@ class _MainCalculatorPageState extends State<MainCalculatorPage> {
                   ),
                 ),
                 const CustomDivider(thickness: 1.3),
-                Padding(
-                  padding: PaddingItems().paddingVerticalOnlySmall,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      customButton(
-                          context, '7', ColorItems().colorIconUnselected),
-                      customButton(
-                          context, '8', ColorItems().colorIconUnselected),
-                      customButton(
-                          context, '9', ColorItems().colorIconUnselected),
-                      customButton(
-                          context, '/', ColorItems().colorIconUnselected),
-                      customButton(
-                          context, 'X', ColorItems().colorIconUnselected),
-                    ],
-                  ),
-                ),
+                line(context, firstLine),
+                line(context, secondLine),
+                line(context, thirdLine),
+                line(context, fourthLine),
+                line(context, fifthLine),
               ],
             ),
           ],
@@ -63,9 +56,26 @@ class _MainCalculatorPageState extends State<MainCalculatorPage> {
     );
   }
 
-  SizedBox customButton(BuildContext context, String text, Color color) {
-    double _elevation = 15;
-    double _borderRadiusVal = 10;
+  Padding line(BuildContext context, List<String> line) {
+    return Padding(
+      padding: PaddingItems().paddingVerticalOnlySmall,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          customButton(context, line[0], ColorItems().colorDarkGray, null),
+          customButton(context, line[1], ColorItems().colorDarkGray, null),
+          customButton(context, line[2], ColorItems().colorDarkGray,
+              IconItems().iconChevronLeft),
+          customButton(context, line[3], ColorItems().colorDarkGray, null),
+        ],
+      ),
+    );
+  }
+
+  SizedBox customButton(
+      BuildContext context, String text, Color color, Icon? iconX) {
+    double _elevation = 20;
+    double _borderRadiusVal = 15;
     BorderRadius _borderRadius = BorderRadius.circular(_borderRadiusVal);
 
     return SizedBox(
@@ -73,9 +83,7 @@ class _MainCalculatorPageState extends State<MainCalculatorPage> {
       width: HeightWidthItems().smallWidth,
       child: ElevatedButton(
         onPressed: () {
-          setState(() {
-            _text = _text + text;
-          });
+          setState(() {});
         },
         style: ElevatedButton.styleFrom(
           elevation: _elevation,
@@ -85,10 +93,18 @@ class _MainCalculatorPageState extends State<MainCalculatorPage> {
         ),
         child: Align(
           alignment: Alignment.center,
-          child: Text(text, style: Theme.of(context).textTheme.button),
+          child: x(text, iconX),
         ),
       ),
     );
+  }
+
+  Widget x(String text, Icon? iconX) {
+    if (iconX != null && text == '') {
+      return iconX;
+    } else {
+      return Text(text, style: Theme.of(context).textTheme.button);
+    }
   }
 }
 
