@@ -23,15 +23,8 @@ class Calculate {
         whichStack++;
       }
     }
-    // stackValueFirst.print();
-    // stackValueSecond.print();
-
     StringBuffer sb = StringBuffer();
 
-    while (stackValueFirst.isNotEmpty) {
-      print(stackValueFirst.pop() + 'a');
-      // sb.write(stackValueFirst.pop());
-    }
     // print(sb);
     return 0;
   }
