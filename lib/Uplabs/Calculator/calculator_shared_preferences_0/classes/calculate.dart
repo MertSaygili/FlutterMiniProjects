@@ -1,31 +1,34 @@
-import 'package:stack/stack.dart';
+import '../model/stack.dart';
 
 class Calculate {
   double calculate(String text) {
-    Stack<String> stackValueFirst = Stack();
-    Stack<String> stackValueSecond = Stack();
-    Stack<String> operator = Stack();
-    int whichStack = 2;
+    // int _stackSize = 40;
 
-    for (int i = text.length - 1; i >= 0; i--) {
-      int convertToAscii = text.codeUnitAt(i);
+    // Stack _firstStack = Stack(_stackSize);
+    // Stack _secondStack = Stack(_stackSize);
+    // Stack _operator = Stack(_stackSize);
 
-      if (convertToAscii >= 48 || convertToAscii <= 57) {
-        // number
-        if (whichStack % 2 == 0) {
-          stackValueFirst.push(text[i]);
-        } else {
-          stackValueSecond.push(text[i]);
-        }
-      } else {
-        // operators
-        operator.push(text[i]);
-        whichStack++;
-      }
-    }
-    StringBuffer sb = StringBuffer();
-
-    // print(sb);
+    for (int i = 0; i < text.length; i++) {}
     return 0;
+  }
+
+  String preseuence(String exp) {
+    switch (exp) {
+      case '-':
+        break;
+      case '+':
+        break;
+      case 'X':
+        break;
+      case '/':
+        break;
+      case '%':
+        break;
+      case '.':
+        break;
+      default:
+    }
+
+    return 'x';
   }
 }

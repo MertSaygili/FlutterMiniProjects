@@ -11,7 +11,7 @@ class Stack {
     _stack = List.filled(_stackSize, null, growable: false);
   }
 
-  void _push(String val) {
+  void push(String val) {
     if (_top < _stackSize - 1) {
       _stack[++_top] = val;
     } else {
@@ -19,8 +19,8 @@ class Stack {
     }
   }
 
-  String _pop() {
-    if (_isNotEmpty()) {
+  String pop() {
+    if (isNotEmpty()) {
       return _stack[_top--];
     } else {
       _top = -1;
@@ -28,21 +28,21 @@ class Stack {
     }
   }
 
-  bool _isEmpty() {
+  bool isEmpty() {
     if (_top == -1) {
       return true;
     }
     return false;
   }
 
-  bool _isNotEmpty() {
-    if (!_isEmpty()) {
+  bool isNotEmpty() {
+    if (!isEmpty()) {
       return true;
     }
     return false;
   }
 
-  void _printStack(String s) {
+  void printStack() {
     for (int i = 0; i <= _top; i++) {
       print(_stack[i] + ' ');
     }
