@@ -8,7 +8,8 @@ class Calculate {
     // Stack _secondStack = Stack(_stackSize);
     // Stack _operator = Stack(_stackSize);
 
-    for (int i = 0; i < text.length; i++) {}
+    for (int i = 0; i < text.length; i++) {
+    }
     return 0;
   }
 

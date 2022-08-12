@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Uplabs/Calculator/calculator_shared_preferences_0/pages/calculator_main_page.dart';
+import 'Classes/MiniProjects/sheet_component/sheet_basic.dart';
 import 'Uplabs/Calculator/calculator_shared_preferences_0/themes/custom_theme.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: CustomTheme().theme,
-      home: const CalculatorMainPage(),
+      home: const SheetBasic(),
     );
   }
 }
