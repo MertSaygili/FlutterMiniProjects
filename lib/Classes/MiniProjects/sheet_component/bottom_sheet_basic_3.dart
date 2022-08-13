@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 class BottomSheetBasicThird extends StatefulWidget {
@@ -65,7 +67,10 @@ class _BottomSheetBasicThirdState extends State<BottomSheetBasicThird> {
           _titles.elementAt(index),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).pop();
+          print('You have clicked to ${_titles.elementAt(index)}');
+        },
       ),
     );
   }
