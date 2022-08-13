@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/dialog/alert_learn.dart';
+import 'Classes/MiniProjects/sheet_component/bottom_sheet_basic_3.dart';
 import 'Uplabs/Calculator/calculator_shared_preferences_0/themes/custom_theme.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: CustomTheme().theme,
-      home: const AlertLearnView(),
+      home: const BottomSheetBasicThird(),
     );
   }
 }
