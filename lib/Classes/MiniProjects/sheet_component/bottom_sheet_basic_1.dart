@@ -61,7 +61,7 @@ class _CustomSheetState extends StatefulWidget {
 }
 
 class _CustomSheetStateState extends State<_CustomSheetState> {
-  Color _color = Colors.white;
+  final Color _color = Colors.white;
 
   @override
   Widget build(BuildContext context) {
