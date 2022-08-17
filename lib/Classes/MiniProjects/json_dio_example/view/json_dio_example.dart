@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:project1_change_appbar_color/Classes/MiniProjects/json_dio_example/service/post_model.dart';
 
 class JsonDioExample extends StatefulWidget {
@@ -15,12 +13,14 @@ class JsonDioExample extends StatefulWidget {
 
 class _JsonDioExampleState extends State<JsonDioExample> {
   final String _path = 'https://jsonplaceholder.typicode.com/posts';
-  late final List<PostModel> _data;
-  late final Dio _dio;
+  late final List<PostModel>? _data;
+  late final Dio _network;
 
   @override
   void initState() {
     super.initState();
+    _network = Dio(BaseOptions(baseUrl: _path));
+
     fetchItems();
   }
 
@@ -41,10 +41,12 @@ class _JsonDioExampleState extends State<JsonDioExample> {
     return Scaffold(
       appBar: AppBar(),
       body: ListView.builder(
-          itemCount: _data.length,
+          itemCount: _data?.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(_data[index].title.toString()),
+              title: Text(
+                  '${_data?[index].id.toString() ?? ''}.  ${_data?[index].title.toString() ?? ''} '),
+              subtitle: Text(_data?[index].body.toString() ?? ''),
             );
           }),
     );
