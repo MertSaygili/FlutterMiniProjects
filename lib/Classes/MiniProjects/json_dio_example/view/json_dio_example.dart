@@ -14,7 +14,7 @@ class JsonDioExample extends StatefulWidget {
 
 class _JsonDioExampleState extends State<JsonDioExample> {
   final String _path = 'https://jsonplaceholder.typicode.com/posts';
-  late final List<PostModel>? _data;
+  List<PostModel>? _data;
   late final Dio _network;
 
   @override
@@ -30,6 +30,7 @@ class _JsonDioExampleState extends State<JsonDioExample> {
 
     if (response.statusCode == HttpStatus.ok) {
       final data = response.data;
+      print(data);
 
       if (data is List) {
         _data = data.map((e) => PostModel.fromJson(e)).toList();

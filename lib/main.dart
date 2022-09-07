@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/json_dio_example/view/json_dio_example.dart';
+
+import 'Classes/MiniProjects/sheet_component/bottom_sheet_with_dropdown.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       //theme: CustomTheme().theme,
-      home: JsonDioExample(),
+      home: BottomSheetWithDropDown(),
     );
   }
 }
