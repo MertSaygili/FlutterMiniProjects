@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/shared_preferences/list_view/custom_bottom_model_sheet.dart';
 import 'package:project1_change_appbar_color/Classes/MiniProjects/shared_preferences/list_view/shared_manager.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/sheet_component/sheet_with_callback/icon_button.dart';
 
-class PageView extends StatefulWidget {
-  const PageView({Key? key}) : super(key: key);
+class MPageView extends StatefulWidget {
+  const MPageView({Key? key}) : super(key: key);
 
   @override
-  State<PageView> createState() => _PageViewState();
+  State<MPageView> createState() => _MPageViewState();
 }
 
-class _PageViewState extends State<PageView> {
+class _MPageViewState extends State<MPageView> {
   late final SharedManager _sharedManager;
-  late List<String> _countries;
   late List<String> _times;
+
+  final Icon _iconAdd = const Icon(Icons.add);
+
+  List<String> _countries = ['MERT'];
+  String _appBarTitle = 'MPage View';
 
   @override
   void initState() {
@@ -22,24 +28,42 @@ class _PageViewState extends State<PageView> {
   void _setSharedManager() {
     _sharedManager = SharedManager();
     _sharedManager.init();
-    _countries = _sharedManager.getStringList(SharedKeys.cities);
+    // _sharedManager.setStringList(SharedKeys.cities, _countries);
+    // _countries = _sharedManager.getStringList(SharedKeys.cities);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
+        title: Text(_appBarTitle),
+        centerTitle: true,
+        actions: [
+          CustomIconButton(
+              icon: _iconAdd,
+              fun: () async {
+                final result = await showModalBottomSheet(
+                    useRootNavigator: false,
+                    isScrollControlled: false,
+                    context: context,
+                    builder: (context) {
+                      return const CustomBottomModalSheet();
+                    });
+              })
+        ],
       ),
-      body: ListView.builder(
-          itemCount: _countries.length,
-          itemBuilder: ((context, index) {
-            return Card(
-              child: ListTile(
-                title: Text(_countries[index]),
-              ),
-            );
-          })),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.6,
+        child: ListView.builder(
+            itemCount: 25,
+            itemBuilder: ((context, index) {
+              return const Card(
+                child: ListTile(
+                  title: Text('s'),
+                ),
+              );
+            })),
+      ),
     );
   }
 }

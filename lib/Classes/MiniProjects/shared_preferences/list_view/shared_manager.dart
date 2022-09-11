@@ -11,17 +11,27 @@ class SharedManager {
     preferences = await SharedPreferences.getInstance();
   }
 
+  Future<void> setString(SharedKeys key, String value) async {
+    _checkPreferences();
+    await preferences?.setString(key.name, value);
+  }
+
   Future<void> setStringList(SharedKeys key, List<String> list) async {
     _checkPreferences();
-    preferences?.setStringList(key.name, list);
+    await preferences?.setStringList(key.name, list);
+  }
+
+  String getString(SharedKeys key) {
+    _checkPreferences();
+    return preferences?.getString(key.name) ?? '';
   }
 
   List<String> getStringList(SharedKeys key) {
     _checkPreferences();
-    return preferences?.getStringList(key.name) ?? [];
+    return preferences?.getStringList(key.name) ?? ['mert'];
   }
 
   void _checkPreferences() {
-    if (preferences == null) throw 'ERROR FOUND AT DB';
+    if (preferences == null) throw 'CANNOT ACCESS TO DB';
   }
 }
