@@ -17,6 +17,8 @@ class _MPageViewState extends State<MPageView> {
   late String _appBarTitle;
 
   final Icon _iconAdd = const Icon(Icons.add);
+  final Icon _iconRemove = const Icon(Icons.remove_circle);
+  final Icon _iconSave = const Icon(Icons.save);
 
   @override
   void initState() {
@@ -68,6 +70,40 @@ class _MPageViewState extends State<MPageView> {
               return Card(
                 child: ListTile(
                   title: Text(_countries[index]),
+                  onTap: () async {
+                    final result = await showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('Are you sure to remove city?'),
+                            actions: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop<bool>(false);
+                                },
+                                child: _iconSave,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop<bool>(true);
+                                },
+                                child: _iconRemove,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red,
+                                ),
+                              ),
+                            ],
+                          );
+                        });
+                    if (result) {
+                      setState(() {
+                        _countries.remove(_countries[index]);
+                      });
+                    }
+                  },
                 ),
               );
             })),
