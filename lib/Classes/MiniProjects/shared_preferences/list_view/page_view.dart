@@ -13,11 +13,10 @@ class MPageView extends StatefulWidget {
 class _MPageViewState extends State<MPageView> {
   late final SharedManager _sharedManager;
   late List<String> _times;
+  late List<String> _countries;
   late String _appBarTitle;
 
   final Icon _iconAdd = const Icon(Icons.add);
-
-  // List<String> _countries = ['MERT'];
 
   @override
   void initState() {
@@ -29,8 +28,7 @@ class _MPageViewState extends State<MPageView> {
   void _setSharedManager() {
     _sharedManager = SharedManager();
     _sharedManager.init();
-    // _sharedManager.setStringList(SharedKeys.cities, _countries);
-    // _countries = _sharedManager.getStringList(SharedKeys.cities);
+    _countries = _sharedManager.getStringList(SharedKeys.cities);
   }
 
   @override
@@ -51,10 +49,13 @@ class _MPageViewState extends State<MPageView> {
                       return const CustomBottomModalSheet();
                     });
 
-                _sharedManager.setString(SharedKeys.title, result);
+                final List<String> tempList = _countries;
+                tempList.add(result);
+                _sharedManager.setStringList(SharedKeys.cities, tempList);
 
                 setState(() {
-                  _appBarTitle = _sharedManager.getString(SharedKeys.title);
+                  // _appBarTitle = _sharedManager.getString(SharedKeys.title);
+                  _countries = _sharedManager.getStringList(SharedKeys.cities);
                 });
               })
         ],
@@ -62,11 +63,11 @@ class _MPageViewState extends State<MPageView> {
       body: SizedBox(
         height: MediaQuery.of(context).size.height * 0.6,
         child: ListView.builder(
-            itemCount: 25,
+            itemCount: _countries.length,
             itemBuilder: ((context, index) {
-              return const Card(
+              return Card(
                 child: ListTile(
-                  title: Text('s'),
+                  title: Text(_countries[index]),
                 ),
               );
             })),
