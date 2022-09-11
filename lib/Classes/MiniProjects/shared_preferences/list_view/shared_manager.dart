@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum SharedKeys { cities }
+enum SharedKeys { cities, title }
 
 class SharedManager {
   SharedPreferences? preferences;
@@ -22,12 +22,10 @@ class SharedManager {
   }
 
   String getString(SharedKeys key) {
-    _checkPreferences();
-    return preferences?.getString(key.name) ?? '';
+    return preferences?.getString(key.name) ?? 'MPage View';
   }
 
   List<String> getStringList(SharedKeys key) {
-    _checkPreferences();
     return preferences?.getStringList(key.name) ?? ['mert'];
   }
 

@@ -13,16 +13,17 @@ class MPageView extends StatefulWidget {
 class _MPageViewState extends State<MPageView> {
   late final SharedManager _sharedManager;
   late List<String> _times;
+  late String _appBarTitle;
 
   final Icon _iconAdd = const Icon(Icons.add);
 
-  List<String> _countries = ['MERT'];
-  String _appBarTitle = 'MPage View';
+  // List<String> _countries = ['MERT'];
 
   @override
   void initState() {
     super.initState();
     _setSharedManager();
+    _appBarTitle = _sharedManager.getString(SharedKeys.title);
   }
 
   void _setSharedManager() {
@@ -49,6 +50,12 @@ class _MPageViewState extends State<MPageView> {
                     builder: (context) {
                       return const CustomBottomModalSheet();
                     });
+
+                _sharedManager.setString(SharedKeys.title, result);
+
+                setState(() {
+                  _appBarTitle = _sharedManager.getString(SharedKeys.title);
+                });
               })
         ],
       ),
