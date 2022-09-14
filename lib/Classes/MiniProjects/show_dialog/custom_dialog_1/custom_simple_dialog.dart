@@ -13,6 +13,7 @@ class CustomSimpleDialog extends StatefulWidget {
 class _CustomSimpleDialogState extends State<CustomSimpleDialog> {
   late final PaddingItems _paddings;
   final double _elevation = 15;
+  final String _alarmName = 'Alarm ismi';
 
   @override
   void initState() {
@@ -25,35 +26,49 @@ class _CustomSimpleDialogState extends State<CustomSimpleDialog> {
     return SimpleDialog(
       contentPadding: _paddings.contentPaddingDialog,
       titlePadding: _paddings.zeroPadding,
-      title: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-        child: Stack(
-          children: [
-            Divider(
-              color: Colors.black,
-              indent: MediaQuery.of(context).size.width * 0.05,
-              endIndent: MediaQuery.of(context).size.width * 0.15,
-              thickness: 2,
-            ),
-            Positioned(
-              top: -3,
-              right: 0,
-              height: 10,
-              child: IconButton(
-                onPressed: () => Navigator.of(context).pop(),
-                icon: IconItems().iconClose,
-                padding: _paddings.zeroPadding,
-              ),
-            ),
-          ],
-        ),
-      ),
+      title: _StackTitle(paddings: _paddings),
       elevation: _elevation,
       shape: Shapes().borderDialog,
-      children: const [
-        CustomTextField(hintText: 'Alarm ismi', labelText: 'Alarm ismi'),
+      children: [
+        CustomTextField(hintText: _alarmName, labelText: _alarmName),
       ],
     );
-    ;
+  }
+}
+
+class _StackTitle extends StatelessWidget {
+  const _StackTitle({
+    Key? key,
+    required PaddingItems paddings,
+  })  : _paddings = paddings,
+        super(key: key);
+
+  final PaddingItems _paddings;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      child: Stack(
+        children: [
+          Divider(
+            color: Colors.black,
+            indent: MediaQuery.of(context).size.width * 0.05,
+            endIndent: MediaQuery.of(context).size.width * 0.15,
+            thickness: 2,
+          ),
+          Positioned(
+            top: -3,
+            right: 0,
+            height: 10,
+            child: IconButton(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: IconItems().iconClose,
+              padding: _paddings.zeroPadding,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
