@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'Classes/MiniProjects/shared_preferences/list_view/page_view.dart';
+import 'Classes/MiniProjects/show_dialog/custom_dialog_1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       //theme: CustomTheme().theme,
-      home: MPageView(),
+      home: CustomDialogOne(),
     );
   }
 }
