@@ -27,7 +27,11 @@ class Shapes {
   );
 
   OutlineInputBorder borderTextField = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    gapPadding: 0,
-  );
+      borderRadius: BorderRadius.circular(10),
+      gapPadding: 0,
+      borderSide: const BorderSide(
+        style: BorderStyle.solid,
+        color: Colors.black,
+        width: 1,
+      ));
 }

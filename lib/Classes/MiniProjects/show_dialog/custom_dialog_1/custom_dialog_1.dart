@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/show_dialog/custom_dialog_1/custom_simple_dialog.dart';
 import 'package:project1_change_appbar_color/Classes/MiniProjects/show_dialog/custom_dialog_1/items.dart';
 
 class CustomDialogOne extends StatefulWidget {
@@ -9,14 +10,7 @@ class CustomDialogOne extends StatefulWidget {
 }
 
 class _CustomDialogOneState extends State<CustomDialogOne> {
-  late final PaddingItems _paddings;
   final String _title = 'Custom Dialog 1';
-
-  @override
-  void initState() {
-    super.initState();
-    _paddings = PaddingItems();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,30 +22,7 @@ class _CustomDialogOneState extends State<CustomDialogOne> {
               context: context,
               barrierDismissible: true,
               builder: (context) {
-                return SimpleDialog(
-                  contentPadding: _paddings.contentPaddingDialog,
-                  titlePadding: _paddings.zeroPadding,
-                  title: Align(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      icon: IconItems().iconClose,
-                      padding: _paddings.zeroPadding,
-                    ),
-                  ),
-                  elevation: 15,
-                  shape: Shapes().borderDialog,
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        label: const Text('SSS'),
-                        hintText: 'SSS',
-                        border: Shapes().borderTextField,
-                        contentPadding: _paddings.textFieldContentPadding,
-                      ),
-                    ),
-                  ],
-                );
+                return const CustomSimpleDialog();
               });
         },
         child: IconItems().iconOpen,
