@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/show_dialog/custom_dialog_1.dart';
+import 'Classes/MiniProjects/show_dialog/custom_dialog_1/custom_dialog_1.dart';
 
 void main() {
   runApp(const MyApp());

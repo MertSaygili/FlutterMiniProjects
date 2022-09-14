@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/show_dialog/custom_dialog_1/items.dart';
 
 class CustomDialogOne extends StatefulWidget {
   const CustomDialogOne({Key? key}) : super(key: key);
@@ -8,17 +9,14 @@ class CustomDialogOne extends StatefulWidget {
 }
 
 class _CustomDialogOneState extends State<CustomDialogOne> {
-  final Icon _iconOpen = const Icon(Icons.open_in_browser);
-  final Icon _iconClose = const Icon(Icons.close);
-  final RoundedRectangleBorder _shapeDialog = RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(15),
-    side: const BorderSide(
-      style: BorderStyle.solid,
-      color: Colors.black,
-      width: 1,
-    ),
-  );
+  late final PaddingItems _paddings;
   final String _title = 'Custom Dialog 1';
+
+  @override
+  void initState() {
+    super.initState();
+    _paddings = PaddingItems();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,36 +29,32 @@ class _CustomDialogOneState extends State<CustomDialogOne> {
               barrierDismissible: true,
               builder: (context) {
                 return SimpleDialog(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-                  titlePadding: EdgeInsets.zero,
+                  contentPadding: _paddings.contentPaddingDialog,
+                  titlePadding: _paddings.zeroPadding,
                   title: Align(
                     alignment: Alignment.centerRight,
                     child: IconButton(
                       onPressed: () => Navigator.of(context).pop(),
-                      icon: _iconClose,
-                      padding: EdgeInsets.zero,
+                      icon: IconItems().iconClose,
+                      padding: _paddings.zeroPadding,
                     ),
                   ),
                   elevation: 15,
-                  shape: _shapeDialog,
+                  shape: Shapes().borderDialog,
                   children: [
                     TextField(
                       decoration: InputDecoration(
                         label: const Text('SSS'),
                         hintText: 'SSS',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          gapPadding: 0,
-                        ),
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 5),
+                        border: Shapes().borderTextField,
+                        contentPadding: _paddings.textFieldContentPadding,
                       ),
                     ),
                   ],
                 );
               });
         },
-        child: _iconOpen,
+        child: IconItems().iconOpen,
       ),
     );
   }
