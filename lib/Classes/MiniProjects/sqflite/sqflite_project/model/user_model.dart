@@ -2,15 +2,15 @@ class UserModel {
   int? id;
   String? userName;
   int? age;
-  bool? isMaries;
+  bool? isMaried;
 
-  UserModel({this.id, this.userName, this.age, this.isMaries});
+  UserModel({this.id, this.userName, this.age, this.isMaried});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userName = json['userName'];
     age = json['age'];
-    isMaries = json['isMaries'];
+    isMaried = json['isMaried'];
   }
 
   Map<String, dynamic> toJson() {
@@ -18,7 +18,7 @@ class UserModel {
     data['id'] = id;
     data['userName'] = userName;
     data['age'] = age;
-    data['isMaries'] = isMaries;
+    data['isMaried'] = isMaried;
     return data;
   }
 }

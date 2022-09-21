@@ -1,10 +1,10 @@
 // ignore_for_file: unnecessary_null_comparison
 
-import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/model/user_model.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project/model/user_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class UserDatabaseProvider {
-  late final Database database;
+  static Database? database;
   final String _userDatabaseName = 'userDatabase';
   final String _userTableName = 'user';
   final int _version = 1;
@@ -34,12 +34,12 @@ class UserDatabaseProvider {
   }
 
   Future<List<UserModel>> getList() async {
-    final userMaps = await database.query(_userTableName);
+    final userMaps = await database!.query(_userTableName);
     return userMaps.map((e) => UserModel.fromJson(e)).toList();
   }
 
   Future<UserModel?> getItem(int id) async {
-    final userMaps = await database.query(
+    final userMaps = await database!.query(
       _userTableName,
       columns: [columnId],
       where: '$columnId = ?',
@@ -52,15 +52,21 @@ class UserDatabaseProvider {
     }
   }
 
+  Future<bool> insert(UserModel userModel) async {
+    final userMaps = await database!.insert(_userTableName, userModel.toJson());
+
+    return userMaps != null;
+  }
+
   Future<bool> delete(int id) async {
-    final userMaps = await database
+    final userMaps = await database!
         .delete(_userTableName, where: '$columnId = ?', whereArgs: [id]);
 
     return userMaps != null;
   }
 
   Future<bool> update(UserModel userModel, int id) async {
-    final userMaps = await database.update(
+    final userMaps = await database!.update(
       _userTableName,
       userModel.toJson(),
       where: '$columnId = ?',
@@ -71,6 +77,6 @@ class UserDatabaseProvider {
   }
 
   Future<void> close() async {
-    await database.close();
+    await database!.close();
   }
 }
