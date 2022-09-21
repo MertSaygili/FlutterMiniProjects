@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
-import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project/model/user_model.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project_1/model/user_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class UserDatabaseProvider {
