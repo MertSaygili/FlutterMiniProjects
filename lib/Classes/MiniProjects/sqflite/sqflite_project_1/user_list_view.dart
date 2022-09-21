@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project/user_list_view_model.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project_1/user_list_view_model.dart';
 
 class UserListView extends UserListViewModel {
   final double _elevation = 20;

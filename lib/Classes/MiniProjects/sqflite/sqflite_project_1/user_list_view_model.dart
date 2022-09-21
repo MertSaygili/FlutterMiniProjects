@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project/model/user_database_provider.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project_1/model/user_database_provider.dart';
 
 import 'model/user_model.dart';
 import 'user_list.dart';
