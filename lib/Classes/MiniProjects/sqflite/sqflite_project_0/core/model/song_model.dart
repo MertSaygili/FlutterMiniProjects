@@ -1,9 +1,9 @@
 class SongModel {
   int? id;
-  final String songName;
-  final String singer;
-  final int publishYear;
-  final bool hasCopyright;
+  String songName;
+  String singer;
+  int publishYear;
+  bool hasCopyright;
 
   SongModel({
     this.id,
@@ -16,7 +16,7 @@ class SongModel {
   // to save data in database we need to convert it to map
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id?': id,
+      'id': id,
       'songName': songName,
       'singer': singer,
       'publishYear': publishYear,

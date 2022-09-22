@@ -48,7 +48,7 @@ class DatabaseHelper {
       (i) => SongModel(
         id: items[i]['id'],
         songName: items[i]['songName'],
-        singer: items[i]['singerName'],
+        singer: items[i]['singer'],
         publishYear: items[i]['publishYear'],
         hasCopyright: items[i]['hasCopyright'] == 1 ? true : false,
       ),
