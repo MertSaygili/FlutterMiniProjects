@@ -40,7 +40,7 @@ class DatabaseHelper {
 
     List<Map<String, dynamic>> items = await db.query(
       _tableName,
-      orderBy: 'id DESC',
+      orderBy: 'id ASC',
     );
 
     return List.generate(
@@ -65,13 +65,13 @@ class DatabaseHelper {
     );
   }
 
-  Future<void> delete(SongModel songModel) async {
+  Future<void> delete(SongModel? songModel, int id) async {
     final db = await database;
 
     db.delete(
       _tableName,
       where: 'id == ?',
-      whereArgs: [songModel.id],
+      whereArgs: [id],
     );
   }
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project_0/core/database/database_helper.dart';
 
-import 'core/model/song_model.dart';
-
 class DataView extends StatefulWidget {
   const DataView({Key? key}) : super(key: key);
 
@@ -16,13 +14,12 @@ class _DataViewState extends State<DataView> {
   @override
   void initState() {
     super.initState();
-    print(databaseHelper.getSongModels());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Expanded(
+      body: Card(
         child: FutureBuilder(
           future: databaseHelper.getSongModels(),
           initialData: const [],
@@ -37,10 +34,33 @@ class _DataViewState extends State<DataView> {
                 : ListView.builder(
                     itemCount: dataLength,
                     itemBuilder: (context, index) {
-                      return const Text(
-                        'merhaba',
-                        style: TextStyle(
-                          color: Colors.white,
+                      return GestureDetector(
+                        onLongPress: () async {
+                          final result = await showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title:
+                                      const Text('Do you want to delete it?'),
+                                  actions: [
+                                    IconButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop<bool>(true);
+                                        },
+                                        icon: const Icon(Icons.remove))
+                                  ],
+                                );
+                              });
+
+                          if (result) {
+                            databaseHelper.delete(null, data[index].id);
+                            setState(() {});
+                          }
+                        },
+                        child: ListTile(
+                          title: Text('${data[index].songName}'),
+                          subtitle: Text('${data[index].singer}'),
+                          trailing: Text('${data[index].publishYear}'),
                         ),
                       );
                     },
