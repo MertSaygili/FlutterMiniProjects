@@ -35,7 +35,7 @@ class _DataViewState extends State<DataView> {
                     itemCount: dataLength,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onLongPress: () async {
+                        onTap: () async {
                           final result = await showDialog(
                               context: context,
                               builder: (context) {
