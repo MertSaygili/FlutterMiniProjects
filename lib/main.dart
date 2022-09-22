@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/sqflite/sqflite_project_0/take_input_view.dart';
+import 'Classes/MiniProjects/sqflite/sqflite_project_0/data_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: const TakeInputPage(),
+      home: const DataView(),
     );
   }
 }

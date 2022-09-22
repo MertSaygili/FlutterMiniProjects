@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project_0/core/database/database_helper.dart';
 import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project_0/core/model/song_model.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/sqflite/sqflite_project_0/data_view.dart';
 
 class TakeInputPage extends StatefulWidget {
   const TakeInputPage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _TakeInputPageState extends State<TakeInputPage> {
   late int _publishYear;
   late bool _hasCopyright;
 
-  DatabaseHelper db = DatabaseHelper();
+  final DatabaseHelper _db = DatabaseHelper();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,7 @@ class _TakeInputPageState extends State<TakeInputPage> {
       appBar: AppBar(),
       body: Center(child: _buildWrap()),
       floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
         onPressed: () async {
           SongModel songModel = SongModel(
             songName: _songName,
@@ -31,8 +32,12 @@ class _TakeInputPageState extends State<TakeInputPage> {
             publishYear: _publishYear,
             hasCopyright: _hasCopyright,
           );
+          _db.insert(songModel);
+          _db.closeDb();
 
-          print(await db.getSongModels());
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return const DataView();
+          }));
         },
       ),
     );

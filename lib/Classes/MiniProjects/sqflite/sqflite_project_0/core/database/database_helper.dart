@@ -85,4 +85,8 @@ class DatabaseHelper {
       whereArgs: [songModel.id],
     );
   }
+
+  void closeDb() {
+    _database!.close();
+  }
 }
