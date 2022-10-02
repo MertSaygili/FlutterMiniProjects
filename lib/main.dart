@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/image_picker/image_picker_view_0.dart';
+import 'Classes/MiniProjects/silver_appbar/silver_appbar_1/silver_appbar_main.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: const ImagePickerView0(),
+      home: const SilverAppbarView(),
     );
   }
 }
