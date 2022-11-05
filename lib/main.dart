@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/silver_appbar/silver_appbar_1/silver_appbar_main.dart';
+import 'Classes/MiniProjects/disaster/disaster_main.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.dark(),
-      home: const SilverAppbarView(),
+      theme: ThemeData.light(),
+      home: const DisasterMainView(),
     );
   }
 }

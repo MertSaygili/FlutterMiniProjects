@@ -92,6 +92,15 @@ flutter:
     - assets/img/night.jpg
     - assets/img/night2.jpg
     - assets/img/restaurant.jpg
+
+
+    # disaster images
+    - assets/disaster/cig.jpeg
+    - assets/disaster/deprem.jpeg
+    - assets/disaster/yangin.jpeg
+    - assets/disaster/sel.jpeg
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
