@@ -14,7 +14,7 @@ class _SilverAppbarViewState extends State<SilverAppbarView> {
       body: CustomScrollView(
         slivers: [
           SliverPersistentHeader(
-            delegate: CustomSilverAppbarDelegate(expandedHeight: 200),
+            delegate: CustomSilverAppbarDelegate(expandedHeight: 100),
             pinned: true,
             floating: true,
           ),
