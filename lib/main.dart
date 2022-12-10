@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/MiniProjects/url_launcher/url_launcher.dart';
+import 'Classes/MiniProjects/mounted/mounted.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      home: const UrlLauncher(),
+      home: const MountedDart(),
     );
   }
 }
