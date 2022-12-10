@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/mounted/mounted.dart';
+import 'Classes/MiniProjects/skeleteons/basic_skeleton.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      home: const MountedDart(),
+      home: const BasicSkeleton(),
     );
   }
 }
