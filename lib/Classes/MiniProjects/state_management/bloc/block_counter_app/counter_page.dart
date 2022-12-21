@@ -1,15 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CounterApp extends StatefulWidget {
-  const CounterApp({Key? key}) : super(key: key);
+import 'counter_cupit.dart';
 
-  @override
-  State<CounterApp> createState() => _CounterAppState();
-}
+class CounterPage extends StatelessWidget {
+  const CounterPage({Key? key}) : super(key: key);
 
-class _CounterAppState extends State<CounterApp> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Counter')),
+      body: BlocBuilder<CounterCubit, int>(
+        builder: (context, count) => Center(child: Text('$count')),
+      ),
+      floatingActionButton: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () => context.read<CounterCubit>().increment(),
+          ),
+          const SizedBox(height: 4),
+          FloatingActionButton(
+            child: const Icon(Icons.remove),
+            onPressed: () => context.read<CounterCubit>().decrement(),
+          ),
+        ],
+      ),
+    );
   }
 }
