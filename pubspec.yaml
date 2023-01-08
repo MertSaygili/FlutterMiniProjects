@@ -43,8 +43,8 @@ dependencies:
   path_provider: ^2.0.11
 
   # shared pereferences
-  shared_preferences: ^2.0.15
-
+  shared_preferences: ^2.0.15 
+  
   # secure storage
   flutter_secure_storage: ^7.0.1
 
