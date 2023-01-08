@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project1_change_appbar_color/Classes/MiniProjects/shared_preferences/basic_example/shared_preferences_manager.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/shared_preferences/basic_example_by_Kilo-Loco/shared_preferences_manager.dart';
 
 import 'model.dart';
 
