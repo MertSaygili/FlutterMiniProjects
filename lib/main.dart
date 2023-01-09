@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Classes/MiniProjects/shared_preferences/basic_example/page.dart';
+import 'Classes/MiniProjects/shared_preferences/basic_example_by_kilo_loco/page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
