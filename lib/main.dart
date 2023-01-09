@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Classes/MiniProjects/shared_preferences/basic_example_by_kilo_loco/page.dart';
+import 'Classes/MiniProjects/shared_preferences/basic_example_2/page_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      home: XXX(),
+      home: const SharedManagerPageView(),
     );
   }
 }
