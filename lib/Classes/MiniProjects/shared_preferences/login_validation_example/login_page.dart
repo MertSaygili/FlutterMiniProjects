@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/shared_preferences/login_validation_example/open_page.dart';
 
 import 'shared_manager.dart';
 
@@ -71,7 +72,13 @@ class _PreferencesLoginPageState extends State<PreferencesLoginPage> {
                         .headline5
                         ?.copyWith(color: Colors.white),
                   ),
-                  onPressed: () => _saveItems(),
+                  onPressed: () {
+                    _saveItems();
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const FirstPage();
+                    }));
+                  },
                 ),
               ),
             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/shared_preferences/login_validation_example/login_page.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/shared_preferences/login_validation_example/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      home: const PreferencesLoginPage(),
+      home: const SplashScreen(),
     );
   }
 }
