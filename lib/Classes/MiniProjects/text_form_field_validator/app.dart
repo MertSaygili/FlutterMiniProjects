@@ -9,44 +9,71 @@ class TextFormFieldValidatorApp extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<TextFormFieldValidatorApp> {
+  final _key = GlobalKey<FormState>();
+  final TextEditingController _nicknameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _submit() {
+    if (_key.currentState!.validate()) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(title: Text(_Strings().appBarTitle)),
-      body: ListView(
-        padding: PaddingItems().paddingPageNormal,
-        children: [
-          _paddingItem(
-            TextFormField(
-              decoration:
-                  _Decoration()._decorationTextfield(_Strings().labelName),
-            ),
-          ),
-          _paddingItem(
-            TextFormField(
-              decoration:
-                  _Decoration()._decorationTextfield(_Strings().labelEmail),
-            ),
-          ),
-          _paddingItem(
-            TextFormField(
-              decoration:
-                  _Decoration()._decorationTextfield(_Strings().labelPassword),
-            ),
-          ),
-          _paddingItem(
-            SizedBox(
-              height: _Doubles().heightMid,
-              child: ElevatedButton(
-                child: Text(_Strings().buttonLogin),
-                onPressed: () {},
+      body: Form(
+        key: _key,
+        child: ListView(
+          padding: PaddingItems().paddingPageNormal,
+          children: [
+            _paddingItem(
+              TextFormField(
+                controller: _nicknameController,
+                decoration: _Decoration()
+                    ._decorationTextfield(_Strings().labelNickname),
               ),
             ),
-          )
-        ],
+            _paddingItem(
+              TextFormField(
+                controller: _emailController,
+                decoration:
+                    _Decoration()._decorationTextfield(_Strings().labelEmail),
+                validator: validateEmail,
+                keyboardType: TextInputType.emailAddress,
+              ),
+            ),
+            _paddingItem(
+              TextFormField(
+                controller: _passwordController,
+                decoration: _Decoration()
+                    ._decorationTextfield(_Strings().labelPassword),
+              ),
+            ),
+            _paddingItem(
+              SizedBox(
+                height: _Doubles().heightMid,
+                child: ElevatedButton(
+                  onPressed: _submit,
+                  child: Text(_Strings().buttonLogin),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  String? validateEmail(String? value) {
+    String pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value!))
+      return 'Enter Valid Email';
+    else
+      return null;
   }
 
   Padding _paddingItem(Widget child) {
@@ -63,7 +90,7 @@ class _Doubles {
 
 class _Strings {
   final String appBarTitle = 'TextFormField Validator';
-  final String labelName = 'Enter nickname';
+  final String labelNickname = 'Enter nickname';
   final String labelEmail = 'Enter email';
   final String labelPassword = 'Enter password';
   final String buttonLogin = 'Sign up';
