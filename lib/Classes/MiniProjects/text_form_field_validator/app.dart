@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project1_change_appbar_color/Classes/MiniProjects/card_widget/spotify_card_widget.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/text_form_field_validator/validator.dart';
 
 class TextFormFieldValidatorApp extends StatefulWidget {
   const TextFormFieldValidatorApp({Key? key}) : super(key: key);
@@ -13,10 +14,6 @@ class _MyWidgetState extends State<TextFormFieldValidatorApp> {
   final TextEditingController _nicknameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  void _submit() {
-    if (_key.currentState!.validate()) {}
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +37,7 @@ class _MyWidgetState extends State<TextFormFieldValidatorApp> {
                 controller: _emailController,
                 decoration:
                     _Decoration()._decorationTextfield(_Strings().labelEmail),
-                validator: validateEmail,
+                validator: Validator().validateEmail,
                 keyboardType: TextInputType.emailAddress,
               ),
             ),
@@ -66,14 +63,8 @@ class _MyWidgetState extends State<TextFormFieldValidatorApp> {
     );
   }
 
-  String? validateEmail(String? value) {
-    String pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = RegExp(pattern);
-    if (!regex.hasMatch(value!))
-      return 'Enter Valid Email';
-    else
-      return null;
+  void _submit() {
+    if (_key.currentState!.validate()) {}
   }
 
   Padding _paddingItem(Widget child) {
