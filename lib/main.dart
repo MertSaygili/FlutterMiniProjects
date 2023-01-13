@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/text_form_field_validator/app.dart';
+import 'Classes/MiniProjects/extension/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      home: const TextFormFieldValidatorApp(),
+      home: const ExtensionAppView(),
     );
   }
 }
