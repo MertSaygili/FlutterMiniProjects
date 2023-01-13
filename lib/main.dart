@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'Classes/MiniProjects/extension/app.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/route/app_1.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/route/router.dart';
+
+import 'Classes/MiniProjects/route/app_2.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,8 +19,10 @@ class MyApp extends StatelessWidget {
   MaterialApp build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.light(),
-      home: const ExtensionAppView(),
+      initialRoute: '/',
+      onGenerateRoute: RouterManager.generateRoute,
+      theme: ThemeData.dark(),
+      // home: const ExtensionAppView(),
     );
   }
 }

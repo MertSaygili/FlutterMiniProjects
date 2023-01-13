@@ -32,14 +32,12 @@ class _ExtensionAppViewState extends State<ExtensionAppView> {
             Text('extension'.toUpperCase()),
             Text('   extension'.trim()),
             Text('extension   K'.trimLeft()),
-            Text(
-              'extension'
-                  .capitalize()
-                  .toLowerCase()
-                  .toUpperCase()
-                  .trim()
-                  .trimLeft(),
-            ),
+            Text('extension'
+                .capitalize()
+                .toLowerCase()
+                .toUpperCase()
+                .trim()
+                .trimLeft()),
             Text(_animalName),
           ],
         ),
