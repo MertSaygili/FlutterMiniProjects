@@ -23,19 +23,22 @@ class _ShowProductsPageState extends State<ShowProductsPage> {
 
   Scaffold _buildScaffold(BuildContext context) => Scaffold(
         appBar: AppBar(title: Text(_Strings()._appBarTitle), centerTitle: true),
-        body: BlocConsumer(builder: (context, state) {
-          if (state is ProductInitialState) {
-            return _productInitial(context);
-          } else if (state is ProductLoadingState) {
-            return _productLoading();
-          } else if (state is ProductLoadedState) {
-            return _productLoaded(state);
-          } else {
-            return const Center(child: Text('Something went wrong'));
-          }
-        }, listener: (context, state) {
-          _errorMessage(state, context);
-        }),
+        body: BlocConsumer<ProductsCubit, ProductStates>(
+          builder: (context, state) {
+            if (state is ProductInitialState) {
+              return _productInitial(context);
+            } else if (state is ProductLoadingState) {
+              return _productLoading();
+            } else if (state is ProductLoadedState) {
+              return _productLoaded(state);
+            } else {
+              return const Center(child: Text('Something went wrong'));
+            }
+          },
+          listener: (context, state) {
+            _errorMessage(state, context);
+          },
+        ),
       );
 
   ListView _productLoaded(ProductLoadedState state) {

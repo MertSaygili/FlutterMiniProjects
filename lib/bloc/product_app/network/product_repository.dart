@@ -14,8 +14,13 @@ class ProductRepositoryImpl implements ProductRepository {
   Future<List<Product>> getProducts() async {
     final response = await http.get(Uri.parse(baseUrl));
     if (response.statusCode == 200) {
-      final jsonBody = jsonDecode(response.body) as List;
-      return jsonBody.map((e) => Product.fromJson(e)).toList();
+      Map responseBody = jsonDecode(response.body);
+      List _temp = [];
+
+      for (var i in responseBody['products']) {
+        _temp.add(i);
+      }
+      return Product.fromJsonListSnapshot(_temp);
     } else {
       throw NetworkError(response.statusCode.toString(), response.body);
     }
