@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'bloc/product_app/view/show_products.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'Classes/MiniProjects/environment_app/app.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
 
   runApp(const MyApp());
 }
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       // onGenerateRoute: RouterManager.generateRoute,
       theme: ThemeData.dark(),
-      home: const ShowProductsPage(),
+      home: const AppEnv(),
     );
   }
 }
