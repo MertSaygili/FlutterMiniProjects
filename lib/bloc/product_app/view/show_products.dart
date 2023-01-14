@@ -22,7 +22,14 @@ class _ShowProductsPageState extends State<ShowProductsPage> {
   }
 
   Scaffold _buildScaffold(BuildContext context) => Scaffold(
-        appBar: AppBar(title: Text(_Strings()._appBarTitle), centerTitle: true),
+        appBar: AppBar(
+          title: Text(_Strings()._appBarTitle),
+          leading: SizedBox(
+            child: TextFormField(
+              onChanged: (value) {},
+            ),
+          ),
+        ),
         body: BlocConsumer<ProductsCubit, ProductStates>(
           builder: (context, state) {
             if (state is ProductInitialState) {
@@ -62,9 +69,14 @@ class _ShowProductsPageState extends State<ShowProductsPage> {
       child: Column(
         children: [
           const Text('Press the button to load products'),
-          FloatingActionButton(onPressed: () {
-            context.read<ProductsCubit>().getProducts();
-          }),
+          FloatingActionButton(
+            onPressed: () => context.read<ProductsCubit>().getProducts(),
+            child: const Icon(Icons.get_app),
+          ),
+          FloatingActionButton(
+            onPressed: () => context.read<ProductsCubit>().justLoading(),
+            child: const Icon(Icons.watch_outlined),
+          )
         ],
       ),
     );
