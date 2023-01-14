@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'Classes/MiniProjects/environment_app/app.dart';
+import 'bloc/student_app/view/show_student.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       // onGenerateRoute: RouterManager.generateRoute,
       theme: ThemeData.dark(),
-      home: const AppEnv(),
+      home: const ShowStudentPage(),
     );
   }
 }
