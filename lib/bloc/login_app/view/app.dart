@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project1_change_appbar_color/bloc/login_app/service/login_service.dart';
+import 'package:project1_change_appbar_color/bloc/login_app/view/login_done_view.dart';
 import 'package:project1_change_appbar_color/bloc/login_app/viewmodel/login_cubit.dart';
 
 class LoginAppView extends StatelessWidget {
@@ -22,7 +23,13 @@ class LoginAppView extends StatelessWidget {
         service: LoginService(Dio(BaseOptions(baseUrl: baseUrl))),
       ),
       child: BlocConsumer<LoginCubit, LoginState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is LoginComplete) {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return LoginData(model: state.model);
+            }));
+          }
+        },
         builder: (context, state) {
           return _buildScaffold(context, state);
         },
@@ -54,15 +61,27 @@ class LoginAppView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             _password(),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            ElevatedButton(
-              onPressed: () {
-                context.read<LoginCubit>().postUserModel();
-              },
-              child: Text(_Strings()._save),
-            )
+            _button(context)
           ],
         ),
       ),
+    );
+  }
+
+  Widget _button(BuildContext context) {
+    return BlocConsumer<LoginCubit, LoginState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        if (state is LoginComplete) {
+          return const Card(child: Icon(Icons.check));
+        }
+        return ElevatedButton(
+          onPressed: context.watch<LoginCubit>().isLoading
+              ? null
+              : () => context.read<LoginCubit>().postUserModel(),
+          child: Text(_Strings()._save),
+        );
+      },
     );
   }
 

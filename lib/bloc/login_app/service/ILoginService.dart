@@ -2,6 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:project1_change_appbar_color/bloc/login_app/model/login_request_model.dart';
+import 'package:project1_change_appbar_color/bloc/login_app/model/login_response_model.dart';
 
 abstract class ILoginService {
   final Dio dio;
@@ -9,7 +10,7 @@ abstract class ILoginService {
   ILoginService(this.dio);
   final String loginPath = IloginServicePath.LOGIN.rawValue;
 
-  Future<LoginRequestModel?> postUserLogin(LoginRequestModel model);
+  Future<LoginResponseModel?> postUserLogin(LoginRequestModel model);
 }
 
 // ignore: constant_identifier_names

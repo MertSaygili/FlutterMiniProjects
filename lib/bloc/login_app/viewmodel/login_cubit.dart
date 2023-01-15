@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:project1_change_appbar_color/bloc/login_app/model/login_request_model.dart';
+import 'package:project1_change_appbar_color/bloc/login_app/model/login_response_model.dart';
 import 'package:project1_change_appbar_color/bloc/login_app/service/ILoginService.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -19,8 +21,17 @@ class LoginCubit extends Cubit<LoginState> {
   void postUserModel() async {
     if (formKey.currentState != null && formKey.currentState!.validate()) {
       changeLoadingView(isLoading);
-      await Future.delayed(const Duration(seconds: 2));
+      final data = await service.postUserLogin(
+        LoginRequestModel(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        ),
+      );
       changeLoadingView(isLoading);
+
+      if (data is LoginResponseModel) {
+        emit(LoginComplete(data));
+      }
     } else {
       isLoginFail = true;
       emit(LoginValidateState(isLoginFail));
@@ -49,4 +60,10 @@ class LoginLoadingState extends LoginState {
   final bool isLoading;
 
   LoginLoadingState(this.isLoading);
+}
+
+class LoginComplete extends LoginState {
+  final LoginResponseModel model;
+
+  LoginComplete(this.model);
 }
