@@ -10,7 +10,19 @@ class LoginService extends ILoginService {
 
   @override
   Future<LoginResponseModel?> postUserLogin(LoginRequestModel model) async {
-    final response = await dio.post(loginPath, data: model);
+    print(loginPath);
+
+    final response = await dio.post(
+      loginPath,
+      data: model,
+      options: Options(
+          followRedirects: false,
+          validateStatus: (status) {
+            return status! < 500;
+          }),
+    );
+
+    print(response);
 
     if (response.statusCode == 200) {
       return LoginResponseModel.fromJson(response.data);
