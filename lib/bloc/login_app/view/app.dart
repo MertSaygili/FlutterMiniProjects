@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project1_change_appbar_color/bloc/login_app/service/login_service.dart';
 import 'package:project1_change_appbar_color/bloc/login_app/viewmodel/login_cubit.dart';
 
 class LoginAppView extends StatelessWidget {
@@ -8,6 +10,7 @@ class LoginAppView extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
+  final String baseUrl = 'https://regres.in/api';
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +19,7 @@ class LoginAppView extends StatelessWidget {
         _formKey,
         _emailController,
         _passwordController,
+        service: LoginService(Dio(BaseOptions(baseUrl: baseUrl))),
       ),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {},
@@ -28,17 +32,34 @@ class LoginAppView extends StatelessWidget {
 
   Scaffold _buildScaffold(BuildContext context, LoginState state) {
     return Scaffold(
-      appBar: AppBar(title: Text(_Strings()._title), centerTitle: true),
+      appBar: AppBar(
+          title: Text(_Strings()._title),
+          leading: Visibility(
+            visible: context.watch<LoginCubit>().isLoading,
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: CircularProgressIndicator(color: Colors.white),
+            ),
+          )),
       body: Form(
         key: _formKey,
-        autovalidateMode: AutovalidateMode.disabled,
+        autovalidateMode: state is LoginValidateState
+            ? (state.isValidate
+                ? AutovalidateMode.always
+                : AutovalidateMode.disabled)
+            : AutovalidateMode.disabled,
         child: Column(
           children: [
             _email(),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             _password(),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            ElevatedButton(onPressed: () {}, child: Text(_Strings()._save))
+            ElevatedButton(
+              onPressed: () {
+                context.read<LoginCubit>().postUserModel();
+              },
+              child: Text(_Strings()._save),
+            )
           ],
         ),
       ),
