@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'Classes/MiniProjects/snack_bar/snack_bar_app.dart';
+import 'Classes/MiniProjects/top_snackbar/top_snackbar_app.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       // onGenerateRoute: RouterManager.generateRoute,
       theme: ThemeData.dark(),
-      home: SnackBarApp(),
+      home: const TopSnackbarApp(),
     );
   }
 }
