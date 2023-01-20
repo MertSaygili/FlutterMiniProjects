@@ -50,11 +50,8 @@ class LoginAppView extends StatelessWidget {
           )),
       body: Form(
         key: _formKey,
-        autovalidateMode: state is LoginValidateState
-            ? (state.isValidate
-                ? AutovalidateMode.always
-                : AutovalidateMode.disabled)
-            : AutovalidateMode.disabled,
+        autovalidateMode:
+            state is LoginValidateState ? (state.isValidate ? AutovalidateMode.always : AutovalidateMode.disabled) : AutovalidateMode.disabled,
         child: Column(
           children: [
             _email(),
@@ -76,9 +73,7 @@ class LoginAppView extends StatelessWidget {
           return const Card(child: Icon(Icons.check));
         }
         return ElevatedButton(
-          onPressed: context.watch<LoginCubit>().isLoading
-              ? null
-              : () => context.read<LoginCubit>().postUserModel(),
+          onPressed: context.watch<LoginCubit>().isLoading ? null : () => context.read<LoginCubit>().postUserModel(),
           child: Text(_Strings()._save),
         );
       },
