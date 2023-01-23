@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'Classes/MiniProjects/noitification/basic_notification_0/notification_basic.dart';
+import 'Classes/MiniProjects/timer/bloc_timer/app.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       // onGenerateRoute: RouterManager.generateRoute,
       theme: ThemeData.dark(),
-      home: const NotificationBasicApp(),
+      home: const TimerApp(),
     );
   }
 }
