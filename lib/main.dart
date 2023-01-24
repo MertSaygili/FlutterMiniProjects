@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'Classes/MiniProjects/persistent_tab_bar/persistent_tab_bar.dart';
 import 'Classes/MiniProjects/timer/bloc_timer/app.dart';
 
 Future<void> main() async {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       // onGenerateRoute: RouterManager.generateRoute,
       theme: ThemeData.dark(),
-      home: const TimerApp(),
+      home: const PersistenTabbar(),
     );
   }
 }
