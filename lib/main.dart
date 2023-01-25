@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'Classes/MiniProjects/persistent_tab_bar/persistent_tab_bar.dart';
-import 'Classes/MiniProjects/timer/bloc_timer/app.dart';
+import 'Classes/MiniProjects/nested_auto_route/app_1/routes/router.gr.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -16,12 +15,21 @@ class MyApp extends StatelessWidget {
 
   @override
   MaterialApp build(BuildContext context) {
-    return MaterialApp(
+    final _appRouter = AppRouter();
+    return MaterialApp.router(
       title: 'Flutter Demo',
-      // initialRoute: '/',
-      // onGenerateRoute: RouterManager.generateRoute,
+      debugShowCheckedModeBanner: false,
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
       theme: ThemeData.dark(),
-      home: const PersistenTabbar(),
     );
+
+    // return MaterialApp(
+    //   title: 'Flutter Demo',
+    //   // initialRoute: '/',
+    //   // onGenerateRoute: RouterManager.generateRoute,
+    //   theme: ThemeData.dark(),
+    //   home: const PersistenTabbar(),
+    // );
   }
 }

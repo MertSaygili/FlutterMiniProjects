@@ -32,7 +32,7 @@ class _TopSnackbarAppState extends State<TopSnackbarApp> {
 
   void _yeySnackBar(BuildContext context) {
     return showTopSnackBar(
-      Overlay.of(context)!,
+      Overlay.of(context),
       CustomSnackBar.success(
         message: _whyDidYouClicked,
       ),
@@ -41,7 +41,7 @@ class _TopSnackbarAppState extends State<TopSnackbarApp> {
 
   void _whySnackbar(BuildContext context) {
     return showTopSnackBar(
-      Overlay.of(context)!,
+      Overlay.of(context),
       CustomSnackBar.error(
         message: _whyDidYouClicked,
       ),
