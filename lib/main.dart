@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import 'Classes/MiniProjects/nested_auto_route/app_2/routes/app_router.gr.dart';
-import 'Classes/MiniProjects/persistent_tab_bar/persistent_tab_bar.dart';
+import 'Classes/MiniProjects/nested_auto_route/app_1/routes/router.gr.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 // trying something
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  final _appRouter = AppRouter();
 
   @override
   MaterialApp build(BuildContext context) {
-    final _appRouter = RouterE();
-
     // return MaterialApp.router(
     //   title: 'Flutter Demo',
     //   debugShowCheckedModeBanner: false,

@@ -15,7 +15,6 @@ class HomeView extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            IconButton(onPressed: () => context.router.push(HomeDetailView(url: _url)), icon: Image.network(_url)),
             ElevatedButton(
               onPressed: () => context.router.push(const DashboardRoute()),
               child: const Text('TO DASHBOARD'),

@@ -1,24 +1,39 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/empty_router_widgets.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/nested_auto_route/app_2/dashboard/chat/chat.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/nested_auto_route/app_2/dashboard/dashboard.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/nested_auto_route/app_2/dashboard/profile/profile_detail_page.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/nested_auto_route/app_2/dashboard/settings/settings.dart';
 
-import '../../../persistent_tab_bar/persistent_tab_bar.dart';
-import '../../app_1/settings_page.dart';
-import '../dashboard/dashboard.dart';
-import '../dashboard/profile/profile_detail_page.dart';
-import '../home/home_detail_view.dart';
-import '../home/home_view.dart';
+import '../dashboard/profile/profile.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: HomeView, path: '/', initial: true),
-    AutoRoute(page: HomeDetailView, path: 'Detail'),
     AutoRoute(
+      path: '/',
+      initial: true,
       page: DashboardPage,
-      path: 'Dashboard',
-      children: <AutoRoute>[
-        AutoRoute(page: ChatPage, path: 'Chat'),
-        AutoRoute(page: ProfilePage, path: 'Profile', children: <AutoRoute>[AutoRoute(page: ProfileDetailPage, path: 'ProfileDetail')]),
-        AutoRoute(page: SettingsPage, path: 'Settings'),
+      children: [
+        AutoRoute(
+          path: 'chat',
+          name: 'ChatRouter',
+          page: ChatPage,
+        ),
+        AutoRoute(
+          path: 'profile',
+          name: 'ProfileRouter',
+          page: EmptyRouterPage,
+          children: [
+            AutoRoute(path: '', page: ProfilePage),
+            AutoRoute(path: ':profileId', page: ProfileDetailPage),
+          ],
+        ),
+        AutoRoute(
+          path: 'settings',
+          name: 'SettingsRouter',
+          page: SettingsPage,
+        )
       ],
     ),
   ],
