@@ -52,4 +52,5 @@ import '../user_info.dart';
 )
 class $AppRouter {}
 
+
 // SinglePostPageRoute
