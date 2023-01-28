@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'Classes/MiniProjects/nested_auto_route/app_1/routes/router.gr.dart';
-import 'Classes/MiniProjects/skeleteons/movie_skeleton.dart';
+import 'Classes/MiniProjects/right_sidebar/app_right_sidebar.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       // onGenerateRoute: RouterManager.generateRoute,
       theme: ThemeData.light(),
-      home: const MovieSkeletonPage(),
+      home: const AppRightSidebar(),
     );
   }
 }
