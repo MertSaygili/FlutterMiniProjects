@@ -14,12 +14,12 @@ class _SheetWithCallBackFunState extends State<SheetWithCallBackFun> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: 'CAP',
-        icon: const Icon(Icons.add),
-        prefferedSize: 100,
-        fun: bottomSheet,
-      ),
+      // appBar: CustomAppBar(
+      //   title: 'CAP',
+      //   icon: const Icon(Icons.add),
+      //   prefferedSize: 100,
+      //   fun: bottomSheet,
+      // ),
       body: Center(child: Text(_currentText)),
     );
   }
@@ -97,14 +97,7 @@ class CustomDropButton extends StatefulWidget {
 }
 
 class _CustomDropButtonState extends State<CustomDropButton> {
-  final List<String> _items = [
-    'Turkey',
-    'America',
-    'Russia',
-    'Belgium',
-    'France',
-    'Spain'
-  ];
+  final List<String> _items = ['Turkey', 'America', 'Russia', 'Belgium', 'France', 'Spain'];
   String _currentItem = 'Turkey';
 
   @override

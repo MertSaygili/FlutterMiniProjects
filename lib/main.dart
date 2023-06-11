@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import 'Classes/MiniProjects/nested_auto_route/app_1/routes/router.gr.dart';
-import 'Classes/MiniProjects/right_sidebar/app_right_sidebar.dart';
+import 'Classes/MiniProjects/inherited_widget/inherited_widget.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -13,8 +11,8 @@ Future<void> main() async {
 // trying something
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-  final _appRouter = AppRouter();
+  const MyApp({Key? key}) : super(key: key);
+  // final _appRouter = AppRouter();
 
   @override
   MaterialApp build(BuildContext context) {
@@ -39,7 +37,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       // onGenerateRoute: RouterManager.generateRoute,
       theme: ThemeData.light(),
-      home: const AppRightSidebar(),
+      home: const HomePage(),
     );
   }
 }
