@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'Classes/MiniProjects/inherited_widget/inherited_widget.dart';
+import 'package:project1_change_appbar_color/Classes/MiniProjects/dependcy_injection_getit/init.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
 
-  runApp(MyApp());
+  // await SingletonInit().configureDependencies();
+
+  runApp(const MyApp());
 }
 
 // trying something
@@ -37,7 +39,10 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       // onGenerateRoute: RouterManager.generateRoute,
       theme: ThemeData.light(),
-      home: const HomePage(),
+      home: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: null,
+      ),
     );
   }
 }
